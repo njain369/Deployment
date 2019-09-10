@@ -3,6 +3,6 @@ var app=express();
 
 app.use(express.static('public'))
 
-app.listen(8081,()=>{
+app.listen(process.env.PORT || 8080,()=>{
     console.log("Server is ready");
 })
