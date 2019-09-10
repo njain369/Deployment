@@ -1,0 +1,189 @@
+ 
+      *  { box-sizing: border-box;
+          
+        }
+
+        .body {
+            background: url('try.png');
+            width:100%;
+            height:100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            font-family: sans-serif;
+
+        }
+    
+        .navbar {
+            overflow: hidden;
+            background: #000000;
+            border-bottom: 1px solid #fff;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 20px 16px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+   nav{
+       border-bottom:1px solid #000000;
+
+   }
+        .navbar a:hover {
+            background: #000000;
+        }
+
+        .login-container {
+            float: right;
+        }
+
+        .input {
+            padding: 5px;
+            margin-top: 15px;
+            font-size: 14px;
+            border: none;
+            width: 130px;
+        }
+
+        .button {
+            float: right;
+            padding: 5px 10px;
+            margin-top: 15px;
+            margin-right: 50px;
+            background: red;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 0px 5px 5px 0px;
+        }
+
+        .button:hover {
+            background: green;
+        }
+        .nav-item{
+            font-weight: 600;
+            text-transform: uppercase;
+            padding-left: 10px;
+        }
+
+        * {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  max-height: 100%;;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: black;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+.footer1{
+float:left;
+width:30%;
+height:100px;
+}
+.footer2{
+float:left;
+width:30%;
+height:100px;
+}
+.footer3{
+float:left;
+width:30%;
+height:100px;
+}
+.footer4{
+position:relative;
+top:40px;
+height:100px;
+color:black;
+
+}
+.footer5{
+padding:20px;
+background-color:black;
+text-align:center;
+margin:20px;
+margin-bottom:0px;
+margin-left:0px;
+margin-right:0px;
+}
+/*side menu*/
+#sidebar{
+  position:fixed;
+  width:200px;
+  height:100%;
+  background:#151719
+}
+#sidebar ul li{
+  color:rgba(230,230,230,0.9);
+  list-style:none;
+  padding:15px 10px;
+  border-bottom:1px solid rgba(100,100,100,0.3);
+}
