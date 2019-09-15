@@ -1,0 +1,77 @@
+body{
+  padding-top: 80px;
+text-align:center;
+
+background-repeat: no-repeat;
+background-size: cover;
+}
+form{
+
+
+display:inline-block;
+background-color: white;
+background-size: cover;
+border : 3px solid #f1f1f1;
+width:320px;
+height:500px;
+text-align:center;
+position:center;
+border-color: teal;
+border-radius:25px;
+  
+
+}
+
+input[type=text], input[type=password] {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  align-self: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  
+}
+
+
+button:hover {
+  opacity: 0.8;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+.hero-image{
+background-image:url("try.png");
+background-size: cover;
+content: "";
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -2;
+opacity: 0.5;
+
+}
+
+ 
+
+
+
+
+
+}
