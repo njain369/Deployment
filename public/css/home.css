@@ -187,3 +187,17 @@ margin-right:0px;
   padding:15px 10px;
   border-bottom:1px solid rgba(100,100,100,0.3);
 }
+/*leftslide*/
+.box{
+  float:left;
+  overflow: hidden;
+  background: #f0e68c;
+}
+/* Add padding and border to inner content
+for better animation effect */
+.box-inner{
+  width: 400px;
+  padding: 10px;
+  border: 1px solid #a29415;
+}
+
