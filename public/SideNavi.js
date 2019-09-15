@@ -40,7 +40,7 @@ var SideNavi = ( function ($) {
 
 			switch (posDirection) {
 				case 'right' :
-					posEnd = $(cssElements.data, container).width()*1;
+					posEnd = $(cssElements.data, container).width()-300;
 					break;
 				case 'left' :
 					posEnd = 0;
