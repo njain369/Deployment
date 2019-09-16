@@ -1,0 +1,67 @@
+<!-- Dependancies -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+<p class="navbar-text">RPIAN Chat Client</p>
+</div>
+</div>
+</nav>
+<!-- ChatApp -->
+<div class="container">
+<div class="jumbotron">
+<div id="namecontainer">
+<label for="name">Name:</label>
+<input type="text" value="Mr Nobody" class="form-control" id="name">
+</div>
+
+<br>
+<br>
+
+<div class="chatwindow">
+<label for="window">Messages:</label>
+<textarea class="form-control" disabled rows="5" id="window"></textarea>
+</div>
+
+<br>
+<br>
+
+<div id="chatbox">
+<div class="input-group">
+<input type="text" class="form-control" id="box"
+placeholder="Write and Send some Message...">
+<span class="input-group-btn">
+<button id="send" class="btn btn-primary" type="button">Send</button>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- AppController -->
+<script>
+$(init);
+function init()
+{
+const socket = io();
+socket.on('message', (msg) => onMessage(msg));
+
+function onMessage(msg){
+$("#window").append(msg.name + ":: " + msg.message + "\n");
+}
+
+$("#send").on("click",() => {
+socket.emit('sendMessage',{ name : $("#name").val(), message : $("#box").val()});
+$("#box").val("");
+});
+
+$("#box").on("keyup",() => {
+if(event.keyCode == 13){
+$("#send").click();
+}
+});
+}
+</script>
