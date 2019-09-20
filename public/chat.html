@@ -41,8 +41,26 @@ placeholder="Write and Send some Message...">
 </div>
 </div>
 
+<!--Main Controller -->
+<script>
+$(init);
+function init(){
+const socket= io();
+socket.on('message',(msg)=>onMessage(msg));
+function onMessage(msg){
+$("#window").append(msg.name+"::" +msg.message+"\n");
+}
+$("#send").on("click",()=>{
+    socket.emit('sendMessage',{name:$('#name').val(),message:$('#box').val()});
+    $("#box").val("");
+});
+
+
+}
+</script>
 <!-- AppController -->
 <script>
+    /*
 $(init);
 function init()
 {
@@ -64,4 +82,5 @@ $("#send").click();
 }
 });
 }
+*/
 </script>

@@ -1,316 +1,74 @@
-<html>
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel='stylesheet' href="./css/leftslide.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./css/home.css">
- 
-  <title>MEDALL/homepage</title>
-  <style>
-    #sideNavi {
-      position: fixed;
-      right: 50px;
-      top: 25%;
-    }
-
-    .side-navi-item {
-      position: absolute;
-      display: inline-block;
-      width: 150px;
-      height: 50px;
-      transform: rotate(-90deg);
-      transform-origin: left top 0;
-      color: #fff;
-      background-color: #384047;
-      cursor: pointer;
-      border-radius: 5px 5px 0 0;
-    }
-
-    .side-navi-item.item1 {
-      top: 180px;
-      left: 0;
-    }
-
-    .side-navi-item.item2 {
-      top: 355px;
-      left: 0;
-    }
-
-    .side-navi-item.active {
-      background-color: #e5e5e5;
-      color: #000;
-    }
-
-    .side-navi-item>div {
-      padding-top: 15px;
-      text-align: center;
-    }
-
-    .side-navi-data {
-      position: absolute;
-      top: 0;
-      left: 50px;
-      width: 650px;
-      height: 450px;
-      background-color: #e5e5e5;
-    }
-
-    .side-navi-tab {
-      display: none;
-    }
-
-    .side-navi-tab.active {
-      display: inline-block;
-      color: #000;
-    }
-
-    .side-navi-tab>div {
-      padding: 30px;
-    }
-  </style>
-  
-</head>
-
-
-<body>
-
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand-active" href="#" style="font-size:24px"><i class="fa fa-user-md"
-            style="font-size:24px"></i>&nbsp;MEDALL</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="#" style="margin-top: 10px">Home</a></li>
-          <li><a href="#" style="margin-top: 10px">Facilities</a></li>
-          <li><a href="#" style="margin-top:10px;">About us</a></li>
-
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="Registeration.jsp" style="margin-top: 10px"><span class="glyphicon glyphicon-user"></span> Sign
-              Up</a></li>
-          <li><a href="Login.jsp" style="margin-top: 10px"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-  </nav>
-
-
-
-  <div class="slideshow-container">
-
-    <div class="mySlides fade">
-      <div class="numbertext">1 / 3</div>
-      <img src="./images/slide7.jpg" style="width:100%">
-      <div class="text"><b>BOOK APPOINTMENTS WITH THE BEST DOCTORS</b></div>
-    </div>
-
-    <div class="mySlides fade">
-      <div class="numbertext">2 / 3</div>
-      <img src="./images/slide8.jpg" style="width:100%">
-      <div class="text"><b>MEDICINES PRESCRIBED BY HIGHLY RATED DOCTORS</b></div>
-    </div>
-
-    <div class="mySlides fade">
-      <div class="numbertext">3 / 3</div>
-      <img src="./images/slide5.jpg" style="width:100%">
-      <div class="text"><b>GET YOUR OWN PERSONAL DIET AND TRAINER</b></div>
-    </div>
-
-  </div>
-
-  <br>
-
-  <div style="text-align:center">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-
-
-  <div id="sideNavi">
-      <div class="side-navi-item-default"></div>
-    <div class="side-navi-item item1">
-      <div>Get Appointment!</div>
-    </div>
-    <div class="side-navi-item item2">
-      <div>Chat with Doctor?</div>
-    </div>
-    <div class="side-navi-data">
-      <div class="side-navi-tab">
-        This portal gives you the facility to book your appointment anytime anywhere to the doctor available near by you!
-          To go ahead<a href="login.html">Click here!</a>
-        
-      </div>
-      <div class="side-navi-tab">
-      Chatting with doctor and get advice online<br> anytime ,anywhere!
-        to go ahead <a href='chat.html'>Click here!</a>
-      
-    </div>
-  </div>
-  </div>
-  <script src="//code.jquery.com/jquery.min.js"></script>
-  <script src="SideNavi.js"></script>
-  <script type="text/javascript">
- 
-    $(document).ready( function () {
-        /**
-         *  init sidenavi
-         *  first param String direction left or right
-         *  second param conf Object css data
-         **/
-        SideNavi.init('right', {
-            container : '#sideNavi',
-            defaultitem : '.side-navi-item-default',
-            item : '.side-navi-item',
-            data : '.side-navi-data',
-            tab : '.side-navi-tab',
-            active : '.active'
-        });
-
-    });
-
-</script>
-
-  <!--
-<div class="rotating-slider">
-    
-      <ul class="slides">
-    
-        <li>
-    
-          
-    
-        </li>
-    
-        <li>
-    
-          <div class="inner"></div>
-    <img src="slide1.jpg"/>
-        </li>
-    
-        <li>
-    
-          <div class="inner">
-    
-            <img src="slide2.jpg"/>
-          </div>
-    
-        </li>
-    
-        <li>
-    
-          <div class="inner">
-              </div>
-    
-        </li>
-    
-        <li>
-    
-          <div class="inner">
-    <img src="slide3.png"/>
-          </div>
-  
-        </li>
-    
-        <li>
-    
-          <div class="inner">
-                <img src="slide4.jpg"/>
-          </div>
-            </li>
-    
-      </ul>
-
-    </div>
-  -->
-
-
-  <script>
-
-
-    var slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("dot");
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].className += " active";
-      setTimeout(showSlides, 2000); // Change image every 2 seconds
-    }
-  </script>
-
-
-
-  <!--
-<footer>
-  <div class="footer1">
-  <h2>About us </h2>
-  <p>Our Story</p>
-  <p>Terms and Policies</p>
-  <p>Privacy Policy</p>
-  </div>
-    <div class="footer2">
-	<h2>Contact</h2>
-	  <p>Contact Us	</p>
-  <p>Report Us</p>
-  <p>Advertise</p>
-  </div>
-    <div class="footer3">
-	<h2>Facilties</h2>
-	  <p>Appointments</p>
-  <p>Buy medicines</p>
-  <p>Chat</p>
-  <p>traning and diet </p>
-
-  </div>
-    <div class="footer4">
-	
-	<h1><img src="logo.png" style="width:42px;height:42px;">MEDALL</h1>
-  </div>
-  
-</footer>
--->
-  <footer>
-    <div class="footer5">
-      <p style="font-size:1em;">Copyright © 2019 MEDALL. All Rights Reserved.</p>
-    </div>
-
-  </footer>
-
-
-  <script>
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.font = "30px Arial";
-    ctx.strokeText("MEDIT", 10, 50);
-  </script>
-
-</body>
-
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>MEDIT! .. Your HealthCare on your finger tip!</title>
+        <meta name="description" content="Circle Hover Effects with CSS Transitions" />
+        <meta name="keywords" content="circle, border-radius, hover, css3, transition, image, thumbnail, effect, 3d" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/style7.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css' />
+		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script> 
+		<!--[if lte IE 8]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
+    </head>
+    <body>
+        <div class="container">
+		
+		
+           
+			
+			<header>
+			
+				<h1><strong><i class="fa fa-user-md"></i> MEDIT!</strong></h1>
+				<h1>Need healthcare ... Just Medit!</h1>
+				
+			
+				
+				<div class="support-note"><!-- let's check browser support with modernizr -->
+					<!--span class="no-cssanimations">CSS animations are not supported in your browser</span-->
+					<span class="no-csstransforms">CSS transforms are not supported in your browser</span>
+					<span class="no-csstransforms3d">CSS 3D transforms are not supported in your browser</span>
+					<span class="no-csstransitions">CSS transitions are not supported in your browser</span>
+					<span class="note-ie">Sorry, only modern browsers.</span>
+				</div>
+				
+			</header>
+			
+			<section class="main">
+			
+				<ul class="ch-grid">
+					<li>
+						<div class="ch-item">				
+							<div class="ch-info">
+								<div class="ch-info-front ch-img-1"></div>
+								<div class="ch-info-back">
+									<h3>Patient</h3>
+									<p><a href="ind.html">Login</a></p>
+								</div>	
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ch-item">
+							<div class="ch-info">
+								<div class="ch-info-front ch-img-2"></div>
+								<div class="ch-info-back">
+									<h3>Doctor</h3>
+									<p> <a href="ind.html">Login</a></p>
+								</div>
+							</div>
+						</div>
+					</li>
+					
+				</ul>
+				
+			</section>
+        </div>
+    </body>
 </html>

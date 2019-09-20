@@ -1,16 +1,25 @@
 {
-  "name": "ip-project",
+  "name": "deployment",
   "version": "1.0.0",
-  "description": "A rotating slider that uses the Clip-path property to create a circular shape.  Note, because Internet Explorer/Edge do not support the Clip-path property, this will not work in those browsers. Demo at https://codepen.io/tylernj42/full/vWdRxv/",
+  "description": "",
   "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Niraj S. Jain",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrFortunate/Deployment.git"
+  },
+  "author": "Niraj S Jain",
   "license": "MIT",
-  "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^2.2.0"
-  }
+  "bugs": {
+    "url": "https://github.com/MrFortunate/Deployment/issues"
+  },
+  "homepage": "https://github.com/MrFortunate/Deployment#readme"
 }
