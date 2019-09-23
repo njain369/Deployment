@@ -9,6 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/home.css">
+  <script src="js/worker.js"></script>
  
   <title>MEDALL/homepage</title>
   <style>
@@ -73,7 +74,18 @@
       padding: 30px;
     }
   </style>
-  
+  <script>
+    function webworker(){
+    var thread =new Worker('worker.js');
+    thread.postMessage();
+    thread.onmessage=function(e){
+      console.log(e.data);
+window.location.href="ind.html";
+    }
+  }
+    </script>
+
+
 </head>
 
 
@@ -93,7 +105,7 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="#" style="margin-top: 10px">Home</a></li>
+          <li onclick="webworker()"><a href="#" style="margin-top: 10px">Home</a></li>
           <li><a href="#" style="margin-top: 10px">Facilities</a></li>
           <li><a href="#" style="margin-top:10px;">About us</a></li>
 

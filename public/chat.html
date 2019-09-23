@@ -32,7 +32,7 @@
 <div id="chatbox">
 <div class="input-group">
 <input type="text" class="form-control" id="box"
-placeholder="Write and Send some Message...">
+placeholder="Hey how can i help you?...">
 <span class="input-group-btn">
 <button id="send" class="btn btn-primary" type="button">Send</button>
 </span>
@@ -51,6 +51,15 @@ function onMessage(msg){
 $("#window").append(msg.name+"::" +msg.message+"\n");
 }
 $("#send").on("click",()=>{
+    if(($('#box').val()).indexOf('cold')>-1){
+        socket.emit('sendMessage',{name:"Dr ALICE",message:"Dont worry take some Corcin tablets!"});
+    }else if(($('#box').val()).indexOf('hot')>-1 ||($('#box').val()).indexOf('warm')>-1){
+        socket.emit('sendMessage',{name:"Dr ALICE",message:"Whats the thermometer readings!"});
+   
+    }
+    else{
+        socket.emit('sendMessage',{name:"Dr ALICE",message:"Sorry I didnt get you?"}); 
+    }
     socket.emit('sendMessage',{name:$('#name').val(),message:$('#box').val()});
     $("#box").val("");
 });
