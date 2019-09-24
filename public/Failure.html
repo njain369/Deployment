@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>RPISE Login</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+            .listcon ul
+            {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                text-align: center;
+            }
+
+            div{
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse" >
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="javascript:void(0)">RPISE Login</a>
+                </div>
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="container">
+                <div class="container">
+                    <div>
+                        <div>
+                            <div class="jumbotron">
+                                <h1>Your 3 Tries are Exhausted!</h1>
+                                <h2>You Entered Wrong Username/Password 3 times</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $.material.init();
+        </script>
+        <div id="root"></div>
+        <script type="text/babel"></script>
+    </body>
+</html>
