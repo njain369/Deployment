@@ -13,20 +13,41 @@ app.use(session({
     saveUninitialized:true
 }));
 var mongo =require("mongodb").MongoClient;
-var url="mongodb://<heroku_qbrrdr1w>:<deep-dive@369>@ds229068.mlab.com:29068/heroku_qbrrdr1w" //"mongodb://localhost:27017";
-(()=>{
+var url=process.env.MONGODB_URI ||"mongodb://localhost:27017";
+
+
+function init() {
+    
+    let conn;
+    mongo.connect(url)
+            .then((client) => {
+              conn = client;
+              return client.db("heroku_qbrrdr1w");
+            })
+            .then((db) => db.createCollection("Login"))
+            .then((collection) => collection.insertMany([
+                    {username: "tom", password: "cat"},
+                    {username: "harry", password: "potter"}
+                ]))
+            .then(() => conn.close())
+            .then(() => test());
+}
+function test(){
     let conn;
     mongo.connect(url)
     .then((client)=>{
         conn=client;
-        return client.db("test");
+        return client.db("heroku_qbrrdr1w");
     })
     .then((db)=>db.collection("Login"))
     .then((collection) => collection.find())
     .then(cursor => cursor.toArray())
     .then(data => app.locals.users = data)
     .then(()=>conn.close());
-})();
+}
+
+init();
+
 
 app.use(express.static('public'))
 app.get("/",function(req,res){
@@ -48,7 +69,7 @@ if(req.session.isAuthenticated){
 app.post("/authenticator",function(req,res){
    
     if(req.session.try === undefined){
-    req.session.try=0;
+
     res.redirect("/login.html");
 }
 else if(req.session.try<3){
