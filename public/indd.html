@@ -3,15 +3,16 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel='stylesheet' href="./css/leftslide.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <link rel='stylesheet' href="./css/leftslide.css">
+   <link rel="stylesheet" href="./css/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./css/home.css">
-  <script src="js/worker.js"></script>
- 
-  <title>MEDALL/homepage</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+
+  <title><i class=""></i></title>
   <style>
     #sideNavi {
       position: fixed;
@@ -91,38 +92,83 @@ window.location.href="ind.html";
 
 <body>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
+ 
+<!--Main Navigation-->
+<header>
 
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand-active" href="#" style="font-size:24px"><i class="fa fa-user-md"
-            style="font-size:24px"></i>&nbsp;MEDALL</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li onclick="webworker()"><a href="#" style="margin-top: 10px">Home</a></li>
-          <li><a href="#" style="margin-top: 10px">Facilities</a></li>
-          <li><a href="#" style="margin-top:10px;">About us</a></li>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
 
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-         
-          <li><a href="/Logout" style="margin-top: 10px"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+    <!-- Additional container -->
+    <div class="container">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="#"><i class="fa fa-user-md"
+        style="font-size:24px"></i>&nbsp;MEDIT!</a>
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="indd.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
+       
+          <li class="nav-item">
+            <a class="nav-link" href="#">E-Medicine</a>
+          </li>
+
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Features</a>
+            <div class="dropdown-menu dropdown-primary bg-light " aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="login.html">Diagnose Your Self!</a>
+              <a class="dropdown-item" href="login.html">Book an Appointment!</a>
+              <a class="dropdown-item" href="display.html">Tips to be healthy!</a>
+            </div>
+          </li>
+        
         </ul>
+        <!-- Links -->
+
+        <form class="form-inline">
+          <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          </div>
+        </form>
+        <ul class="navbar-nav mr-right">
+      
+        <li class="nav-item">
+          <a class="nav-link"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;&nbsp;Sign-Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Login</a>
+        </li>
+      </ul>
       </div>
+      <!-- Collapsible content -->
 
     </div>
+    <!-- Additional container -->
 
   </nav>
+  <!--/.Navbar-->
 
-
-
+</header>
+<!--Main Navigation-->
+<div>
+  &nbsp;<br>
+</div>
   <div class="slideshow-container">
 
     <div class="mySlides fade">
@@ -170,7 +216,7 @@ window.location.href="ind.html";
       </div>
       <div class="side-navi-tab">
       Chatting with doctor and get advice online<br> anytime ,anywhere!
-        to go ahead <a href='chat.html'>Click here!</a>
+        to go ahead <a href='login.html'>Click here!</a>
       
     </div>
   </div>
@@ -198,58 +244,7 @@ window.location.href="ind.html";
 
 </script>
 
-  <!--
-<div class="rotating-slider">
-    
-      <ul class="slides">   
-    
-        <li>
-    
-          
-    
-        </li>
-    
-        <li>
-    
-          <div class="inner"></div>
-    <img src="slide1.jpg"/>
-        </li>
-    
-        <li>
-    
-          <div class="inner">
-    
-            <img src="slide2.jpg"/>
-          </div>
-    
-        </li>
-    
-        <li>
-    
-          <div class="inner">
-              </div>
-    
-        </li>
-    
-        <li>
-    
-          <div class="inner">
-    <img src="slide3.png"/>
-          </div>
   
-        </li>
-    
-        <li>
-    
-          <div class="inner">
-                <img src="slide4.jpg"/>
-          </div>
-            </li>
-    
-      </ul>
-
-    </div>
-  -->
 
 
   <script>
@@ -307,14 +302,80 @@ window.location.href="ind.html";
   
 </footer>
 -->
-  <footer>
-    <div class="footer5">
-      <p style="font-size:1em;">Copyright © 2019 MEDALL. All Rights Reserved.</p>
-    </div>
+    <!-- Footer -->
+    <footer class="page-footer font-small bg-light pt-4 mt-4">
 
-  </footer>
-
-
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left">
+  
+        <!-- Grid row -->
+        <div class="row">
+  
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3">
+  
+            <!-- Content -->
+            <h5 class="text-uppercase">An ASS Product</h5>
+            <p>Trusted Patner in your way to achieve goals</p>
+  
+          </div>
+          <!-- Grid column -->
+  
+          <hr class="clearfix w-100 d-md-none pb-3">
+  
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+  
+            <!-- Links -->
+            <h5 class="text-uppercase">Our clients</h5>
+  
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!"><img rc="">TCS</a>
+              </li>
+              <li>
+                <a href="#!">NITI Aayog India</a>
+              </li>
+              <li>
+                <a href="#!">BSE Stock</a>
+              </li>
+              <li>
+                <a href="#!">Oberoi Group of Companies</a>
+              </li>
+            </ul>
+  
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+  
+             <!-- Links -->
+             <h5 class="text-uppercase">About</h5>
+  
+             <ul class="list-unstyled">
+               <li>
+                 <a href="#!">Created by ASS limted.</a>
+               </li>
+              
+             </ul>
+          </div>
+          <!-- Grid column -->
+  
+        </div>
+        <!-- Grid row -->
+  
+      </div>
+      <!-- Footer Links -->
+  
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="https://mdbootstrap.com/bootstrap-tutorial/">ASS.com</a>
+      </div>
+      <!-- Copyright -->
+  
+    </footer>
+    <!-- Footer -->
   <script>
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");

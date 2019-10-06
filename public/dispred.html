@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Self Diagnosing</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Material Design for Bootstrap fonts and icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+  <!-- Material Design for Bootstrap CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/css/bootstrap-material-design.min.css" integrity="sha384-R80DC0KVBO4GSTw+wZ5x2zn2pu4POSErBkf8/fSFhPXHxvHJydT0CSgAP2Yo2r4I" crossorigin="anonymous">
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/js/bootstrap-material-design.js" integrity="sha384-3xciOSDAlaXneEmyOo0ME/2grfpqzhhTcM4cE32Ce9+8DW/04AGoTACzQpphYGYe" crossorigin="anonymous"></script>
+<script>//$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+<script> function run(){
+ alert("Entering AJAx run");
+ var xhttp = new XMLHttpRequest();
+ xhttp.onreadystatechange= ()=>{
+     if(xhttp.readyState === XMLHttpRequest.DONE && xhttp.status ===200){
+        var cont1,cont2,cont3=0;
+
+        var h = JSON.parse(xhttp.responseText);
+        var input=document.getElementById("t1").value;
+       
+        var a=h.a;
+        var b=h.b;
+        var c=h.c;
+       loop(a,b,c);
+        // for(var i of a){
+        //   if(input.includes(i)){
+        //    alert(i);   
+        //     cont1++;
+        //     alert(cont1);
+        //      }else{
+        //        console.log("Not Found");
+        //      }
+        // }
+        // for(var i in h.b){
+        //   if(input.includes(h.b[i])){
+        //         cont2++;
+        //      }
+        // }
+        // for(var i in h.b){
+        //   if(input.includes(h.c[i])){
+        //         cont3++;
+        //      }
+        // }
+        // if(cont1>cont2 && cont1>cont3){
+        //   document.getElementById("ta").value="You have Diabetes";
+        // }else if(cont2>cont1&&cont2>cont3){
+        //   document.getElementById("ta").value="You have Malaria";   
+        // }else if(cont3>cont1&&cont3>cont2){
+        //   document.getElementById("ta").value="Our prediction predicts that you must be having normal fever";
+        // }else if(cont1==0&&cont2==0&&cont3==0){
+        //   document.getElementById("ta").value="Sorry Cant Predict...please refer to your family doctor";
+       
+        // }
+
+         }
+
+    };
+    function loop(a,b,c){
+      alert("Hey now i am in loop");
+      var input=document.getElementById("t1").value;
+      
+      // for(var i=0;i<3;i++){
+      //     var j=a[i];
+      //     if(input.includes(j)){
+      //       alert("Yes i found it");
+      //     }
+      //   }
+      var cont1=0;
+      var cont2=0;
+      var cont3=0;
+        for(var i in a){
+          var j=a[i]
+          if(input.includes(j)){
+           alert(j);   
+            cont1++;
+            alert(cont1);
+             }else{
+               console.log("Not Found");
+             }
+        }
+        for(var i in b){
+         // alert("I am in the checking box")
+          var j=b[i];
+          if(input.includes(j)){
+                cont2++;
+             }
+        }
+        for(var i in c){
+          var j=c[i]
+          if(input.includes(j)){
+                cont3++;
+             }
+        }
+        
+        if(cont1>cont2 && cont1>cont3){
+          if(cont1<3){
+           document.getElementById("ta").value="Sorry We cant predict ..may be you must be having normal fever"; 
+          }else{
+          document.getElementById("ta").value="Our Prediction shows ..You may be having Diabetes ..you are recommend to please visit nearest doctor!";
+          }
+        }else if(cont2>cont1&&cont2>cont3){
+          if(cont2<3){
+           document.getElementById("ta").value="Sorry We cant predict..may be you must be having normal fever"; 
+          }else{
+          document.getElementById("ta").value="Our Prediction shows ..You may be have Malaria..you are recommended to visit nearest doctor";   
+          }
+        }else if(cont3>cont1&&cont3>cont2){
+          if(cont3<3){
+           document.getElementById("ta").value="Sorry We cant predict..may be you must be having normal fever"; 
+          }else{
+          document.getElementById("ta").value="Our prediction predicts that you must be having normal fever";
+          }
+        }else if(cont1==0&&cont2==0&&cont3==0){
+          document.getElementById("ta").value="Sorry Cant Predict...please refer to your family doctor";
+       
+        }
+
+    }
+    xhttp.open("GET","/jsonajax",true);
+    xhttp.send();
+    console.log("Leaving  Run");
+
+ }   
+</script>  
+
+  <div class="jumbotron">
+      <h1 class="display-3" style="text-align:Center">Diagnose own your own!</h1>
+      <div class="form-group">
+          <textarea  style="height:10em" class="form-control" id="ta"></textarea>
+          <!-- <div class="input-group">
+            <input type="number" class="form-control" placeholder="Please enter here your Age ?"id="t2">
+         
+          </div> -->
+          <div class="input-group">
+            
+            <input type="text" class="form-control" placeholder="Please enter here your symtoms?"id="t1">
+              <span class="input-group-btn">
+              <button type="button"  class="btn btn-solid-info" onclick="run()">Upload</button>
+            </span>
+            </div>
+            
+        </div>
+      </div>
+   
+</body>
+</html>

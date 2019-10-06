@@ -34,7 +34,7 @@ app.get("/",function(req,res){
 })
 app.get("/Login",function(req,res){
 if(req.session.isAuthenticated){
-    res.redirect("/indd.html");
+    res.redirect("/ind.html");
 }else{
     if(req.session.try===undefined){
         req.session.try=0;
@@ -46,8 +46,9 @@ if(req.session.isAuthenticated){
 
 
 app.post("/authenticator",function(req,res){
-if(req.session.try === undefined){
-    
+   
+    if(req.session.try === undefined){
+    req.session.try=0;
     res.redirect("/login.html");
 }
 else if(req.session.try<3){
@@ -61,7 +62,7 @@ else if(req.session.try<3){
         if(Pass === userRecord[0].password){
             req.session.isAuthenticated=true;
            // req.session.uname=Name;
-            res.redirect("/indd.html");
+            res.redirect("/ind.html");
         }else{
             req.session.try++;
             res.redirect("/login.html");
@@ -82,7 +83,43 @@ app.get("/Logout",function(req,res){
 app.get('/Failure',function(req,res){
     setTimeout(()=>req.session.destroy(),3000);
     res.redirect("/Failure.html");
-})
+});
+
+app.get("/jsonajax",function(req,res){
+    res.setHeader('Content-Header','application/json');
+    var diabetes ={
+        0:"thirst",
+        1:"Hunger",
+        2:"hunger",
+        3:"Thirst",
+        4:"weight",
+        5:"Weight",
+        6:"Irritable",
+        7:"Skin Infection",
+        8:"Infection",
+        9:"infection",
+        10:"Blurred Vision",
+        11:"blurred vision"
+    }
+    var malaria={
+      0:"HeadAche",
+      1:"vomiting",
+      3:"Diarrhea",
+      4:"diarrhea",
+      5:"Vomiting",
+      6:"abdominal pain",
+      7:"Abdominal pain",
+      8:"anemia",
+      9:"muscle pain",
+      10:"fever"
+    };
+    var d3n={
+      0:"Increase in temperature",
+      1:"vomiting"
+    };
+    res.send(JSON.stringify({a:diabetes,b:malaria,c:d3n}));
+  });
+  
 var hserver=app.listen(process.env.PORT || 8080,()=>{
     console.log("Server is ready");
 });
