@@ -1,42 +1,137 @@
-<!DOCTYPE html>
-<html>
-<title>MED-ALL/Registration </title>
-
+<html lang="en-US">
 <head>
- <link rel="stylesheet" href="./css/medregister.css"> </head>
-<div class="image"></div>
+  <meta charset="utf-8">
+    <title>Login</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+<style>
+@charset "utf-8";
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
 
-<form action="action_page.php"  >
-  <div class="container">
-    <h1>CREATE AN ACCOUNT</h1>
-    <hr>
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
 
-    <label for="name"><b>Your Full Name: </b> </label>
-    <input type="text" placeholder="Enter Full Name" name="name" required><br>
+body {
+  background: #2c3338;
+  color: #606468;
+  font: 87.5%/1.5em 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+input {
+  border: none;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+after { clear: both; }
+
+#login {
+  margin: 50px auto;
+  width: 320px;
+}
+
+#login form {
+  margin: auto;
+  padding: 22px 22px 22px 22px;
+  width: 100%;
+  border-radius: 5px;
+  background: #282e33;
+  border-top: 3px solid #434a52;
+  border-bottom: 3px solid #434a52;
+}
+
+#login form span {
+  background-color: #363b41;
+  border-radius: 3px 0px 0px 3px;
+  border-right: 3px solid #434a52;
+  color: #606468;
+  display: block;
+  float: left;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+#login form input[type="number"] {
+  background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
 
 
-    <label for="usrtel" ><b>Mob Number: </b></label>
-    <input type="tel" placeholder="Enter Mobile Number" maxlength="10" name="usrtel" required><br><br>
+#login form input[type="date"] {
+  background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
+#login form input[type="text"] {
+  background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
 
-    <label for="date"><b>Date of Birth: </b></label>
-    <input type="date" placeholder="Enter Date of Birth" name="date" required><br><br>
+#login form input[type="password"] {
+  background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
 
-    <label for="email"><b>Email: </b></label>
-    <input type="email" placeholder="Enter Email" name="email" required><br><br>
+#login form input[type="submit"] {
+  background: #b5cd60;
+  border: 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+#login form input[type="submit"]:hover {
+  background: #16aa56;
+}
+</style>
+</head>
+    <div id="login">
+      <form name='form-signup' action="/registeration" method="POST">
+        <span class="fontawesome-user"></span>
+          <input type="text" id="user" placeholder="Username" name="name">
+        
+          <span class="fontawesome-phone"></span>
+        <input type="number" id="phone" placeholder="Phone Number" name='phno'>
 
-    <label for="psw"><b>Password: </b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required><br>
+        <span class="fontawesome-calendar"></span>
+        <input type="date" id="dat" placeholder="DOB" name="dob">
+        <span class="fontawesome-lock"></span>
+          <input type="password" id="pass" name="pass" placeholder="Password">
+        <span class="fontawesome-key"></span>
+        <input type="password" id="confpass" name="conpass" placeholder="Confirm Password">
+        <input type="submit" value="Submit">
 
-    <label for="psw-repeat"><b>Confirm Password: </b></label>
-    <input type="password" placeholder="Enter Password" name="psw-repeat" required><br>
-
-    <p>By creating an account you agree to our <a href="T&C.html" style="color:dodgerblue">Terms & Privacy</a>.</p>
-      
-    <p>Already have an account? <a href="./css/login.html" style="color:dodgerblue">click here!</a></p>
-    <div class="clearfix">
-      <button type="reset" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn">Sign Up</button>
-    </div>
-  </div>
 </form>
+</div>
 </html>

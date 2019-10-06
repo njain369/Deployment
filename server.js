@@ -27,7 +27,8 @@ function init() {
             .then((db) => db.createCollection("Login"))
             .then((collection) => collection.insertMany([
                     {username: "tom", password: "cat"},
-                    {username: "harry", password: "potter"}
+                    {username: "harry", password: "potter"},
+               
                 ]))
             .then(() => conn.close())
             .then(() => test());
@@ -48,7 +49,28 @@ function test(){
 
 init();
 
+app.post("/registeration",function(req,res){
+(req)=>{var uname=req.body.name;
+var phno=req.body.phno;
+var DOB =req.body.dob;
+var password =req.body.pass;
+mongo.client(url)
+.then((client)=>{
+    conn=client;
+        return client.db("heroku_qbrrdr1w");
 
+ })
+ .then((db)=>db.collection("Login"))
+ .then((collection)=>collection.insertMany([
+     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
+     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
+     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
+     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
+     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
+ ])).then((conn)=>conn.close())
+};
+res.send("/Login");
+});
 app.use(express.static('public'))
 app.get("/",function(req,res){
     res.redirect("./index.html");

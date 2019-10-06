@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel='stylesheet' href="./css/leftslide.css">
    <link rel="stylesheet" href="./css/home.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
@@ -31,21 +32,23 @@
       background-color: #384047;
       cursor: pointer;
       border-radius: 5px 5px 0 0;
-    }
+  }
 
     .side-navi-item.item1 {
       top: 180px;
       left: 0;
+      
     }
 
     .side-navi-item.item2 {
       top: 355px;
       left: 0;
+      
     }
 
     .side-navi-item.active {
       background-color: #e5e5e5;
-      color: #000;
+      color: #000000;
     }
 
     .side-navi-item>div {
@@ -149,7 +152,7 @@ window.location.href="ind.html";
         <ul class="navbar-nav mr-right">
       
         <li class="nav-item">
-          <a class="nav-link"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;&nbsp;Sign-Up</a>
+          <a class="nav-link" href="register.html"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;&nbsp;Sign-Up</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/Login"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Login</a>
@@ -201,7 +204,7 @@ window.location.href="ind.html";
 
 
   <div id="sideNavi">
-      <div class="side-navi-item-default"></div>
+      <div class="side-navi-item-default fixed"></div>
     <div class="side-navi-item item1">
       <div>Get Appointment!</div>
     </div>
@@ -302,8 +305,58 @@ window.location.href="ind.html";
   
 </footer>
 -->
-    <!-- Footer -->
-    <footer class="page-footer font-small bg-light pt-4 mt-4">
+<div>
+  <br>
+
+  
+  <h1 class="animated infinite fadeIn delay-3s" style="text-align: center">Book Appointment with top notch doctors!</h1>
+<br>
+</div>
+<div class="card-deck">
+    <div class="card">
+      <img class="card-img-top" src="./images/doc.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Dr Niraj Jain</h5>
+        <p class="card-text">India's Best Gynaecologist .Got Award and selected among 100 top doctors of world in Forbes Magzine</p>
+      </div>
+      <div class="card-body">
+          <a class="card-link" href="">Get Appointment</a>
+        </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="./images/doc.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Dr Hitesh Mukerjee</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      </div>
+      <div class="card-body">
+          <a class="card-link" href="">Get Appointment</a>
+        </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="./images/doc.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Dr Lata Mangeskar</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      </div>
+      <div class="card-body">
+        <a class="card-link" href="">Get Appointment</a>
+      </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="./images/doc.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Dr. Lakshmi Raut</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-body">
+          <a class="card-link" href="">Get Appointment</a>
+        </div>
+      </div>
+   
+  </div>
+<!-- Footer -->
+    <footer class="page-footer pt-4 mt-4   text-center text-md-left mt-5">
 
       <!-- Footer Links -->
       <div class="container text-center text-md-left">
@@ -351,8 +404,50 @@ window.location.href="ind.html";
           <div class="col-md-3 mb-md-0 mb-3">
   
              <!-- Links -->
-             <h5 class="text-uppercase">About</h5>
-  
+             
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+ <h5 class="text-uppercase" >About</h5> 
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Created By ASS with heart by</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <h1>Lead Full Stack Developer</h1>
+          <h2>Niraj S. Jain</h1>
+         <br>
+          <img src="./images/ip1.png">
+        </div>
+        <br>
+        <div>
+            <h1>UI/UX Developer</h1>
+            <h2>Swapnil Joshi</h1>
+           <br>
+            <img src="./images/ip1.png">
+          </div>   
+            <br>
+            <div>
+                <h1>Developer</h1>
+                <h2>Parth Kanani</h1>
+               <br>
+                <img src="./images/ip1.png">
+              </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
              <ul class="list-unstyled">
                <li>
                  <a href="#!">Created by ASS limted.</a>
