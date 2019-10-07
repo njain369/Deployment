@@ -28,7 +28,10 @@ function init() {
             .then((collection) => collection.insertMany([
                     {username: "tom", password: "cat"},
                     {username: "harry", password: "potter"},
-               
+                    {username: "Swapnil", password: "swap123"},
+                    {username: "parth", password: "parth123"},
+                    {username: "niraj", password: "niraj123"}
+                           
                 ]))
             .then(() => conn.close())
             .then(() => test());
