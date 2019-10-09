@@ -1,0 +1,389 @@
+<style>
+html, body {
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 400px;
+} 
+</style>
+<script src="https://code.angularjs.org/1.4.8/angular.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script src="https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script>
+<div ng-app="mapApp" ng-controller="mapCtrl">
+        
+        <div id="map"></div>
+</div>
+<script>
+angular.module('mapApp', [])
+
+.controller('mapCtrl', function ($scope) {
+    $scope.locations = [
+        {lat:	18.9553008	,lng:	72.8131284	}	,
+{lat:	18.9547494	,lng:	72.8138818	}	,
+{lat:	18.9637874	,lng:	72.8183134	}	,
+{lat:	18.9678423	,lng:	72.8194213	}	,
+{lat:	18.9496504	,lng:	72.840078	}	,
+{lat:	18.9459189	,lng:	72.8236738	}	,
+{lat:	18.9530797	,lng:	72.8202165	}	,
+{lat:	18.9478967	,lng:	72.8311258	}	,
+{lat:	18.9463731	,lng:	72.8247104	}	,
+{lat:	18.9417315	,lng:	72.8295561	}	,
+{lat:	18.9448695	,lng:	72.8336721	}	,
+{lat:	18.9493471	,lng:	72.8318757	}	,
+{lat:	19.1284347	,lng:	72.9252514	}	,
+{lat:	18.9377976	,lng:	72.834585	}	,
+{lat:	18.9718535	,lng:	72.8131046	}	,
+{lat:	18.9545865	,lng:	72.8280667	}	,
+{lat:	18.9385352	,lng:	72.836334	}	,
+{lat:	18.9720971	,lng:	72.8374064	}	,
+{lat:	18.936514	,lng:	72.836002	}	,
+{lat:	18.9476546	,lng:	72.830345	}	,
+{lat:	18.9672617	,lng:	72.8200544	}	,
+{lat:	18.9696202	,lng:	72.8022485	}	,
+{lat:	18.9642107	,lng:	72.8247562	}	,
+{lat:	18.970642	,lng:	72.809483	}	,
+{lat:	18.9597259	,lng:	72.836039	}	,
+{lat:	18.9603969	,lng:	72.8387222	}	,
+{lat:	26.4498954	,lng:	74.6399163	}	,
+{lat:	18.9636544	,lng:	72.818423	}	,
+{lat:	18.9641845	,lng:	72.8132034	}	,
+{lat:	18.9605612	,lng:	72.8283477	}	,
+{lat:	18.9637874	,lng:	72.8183134	}	,
+{lat:	18.961428	,lng:	72.8183682	}	,
+{lat:	18.9627051	,lng:	72.813081	}	,
+{lat:	18.9464086	,lng:	72.8399863	}	,
+{lat:	18.9622943	,lng:	72.8101406	}	,
+{lat:	18.9581338	,lng:	72.8243748	}	,
+{lat:	18.9558359	,lng:	72.837952	}	,
+{lat:	18.9668565	,lng:	72.8195343	}	,
+{lat:	18.9558283	,lng:	72.8326283	}	,
+{lat:	18.9580809	,lng:	72.8176725	}	,
+{lat:	18.9532363	,lng:	72.831977	}	,
+{lat:	18.9579676	,lng:	72.8232777	}	,
+{lat:	19.1284347	,lng:	72.9252514	}	,
+{lat:	18.9545865	,lng:	72.8280667	}	,
+{lat:	18.959455	,lng:	72.8094626	}	,
+{lat:	18.9545209	,lng:	72.8305025	}	,
+{lat:	18.9511794	,lng:	72.8392293	}	,
+{lat:	18.9564745	,lng:	72.8145393	}	,
+{lat:	18.9506842	,lng:	72.832798	}	,
+{lat:	18.9519968	,lng:	72.8327889	}	,
+{lat:	18.9530797	,lng:	72.8202165	}	,
+{lat:	18.9530932	,lng:	72.8174208	}	,
+{lat:	18.9591602	,lng:	72.8006534	}	,
+{lat:	19.0694924	,lng:	72.8920193	}	,
+{lat:	18.9496504	,lng:	72.840078	}	,
+{lat:	18.9488567	,lng:	72.8399523	}	,
+{lat:	18.9547494	,lng:	72.8138818	}	,
+{lat:	18.9448695	,lng:	72.8336721	}	,
+{lat:	18.9493471	,lng:	72.8318757	}	,
+{lat:	18.9635191	,lng:	72.807574	}	,
+{lat:	18.9498237	,lng:	72.8330318	}	,
+{lat:	18.9518751	,lng:	72.8255528	}	,
+{lat:	18.946062	,lng:	72.8318426	}	,
+{lat:	18.9478967	,lng:	72.8311258	}	,
+{lat:	18.9476546	,lng:	72.830345	}	,
+{lat:	18.9566733	,lng:	72.8327624	}	,
+{lat:	18.9476208	,lng:	72.8290822	}	,
+{lat:	18.9511203	,lng:	72.8257825	}	,
+{lat:	18.9476763	,lng:	72.8341902	}	,
+{lat:	18.947455	,lng:	72.8273738	}	,
+{lat:	18.9463731	,lng:	72.8247104	}	,
+{lat:	18.9455364	,lng:	72.8305685	}	,
+{lat:	18.9531044	,lng:	72.7951079	}	,
+{lat:	18.943205	,lng:	72.829968	}	,
+{lat:	18.947078	,lng:	72.824476	}	,
+{lat:	18.9446489	,lng:	72.8296979	}	,
+{lat:	18.9459189	,lng:	72.8236738	}	,
+{lat:	18.944533	,lng:	72.825087	}	,
+{lat:	18.9553008	,lng:	72.8131284	}	,
+{lat:	18.9432135	,lng:	72.8229996	}	,
+{lat:	18.9385503	,lng:	72.8323463	}	,
+{lat:	18.9439562	,lng:	72.8393885	}	,
+{lat:	18.9443663	,lng:	72.8241696	}	,
+{lat:	18.9448695	,lng:	72.8336721	}	,
+{lat:	18.9362381	,lng:	72.8382547	}	,
+{lat:	18.9417315	,lng:	72.8295561	}	,
+{lat:	18.9377976	,lng:	72.834585	}	,
+{lat:	18.9380978	,lng:	72.8343838	}	,
+{lat:	18.9385352	,lng:	72.836334	}	,
+{lat:	18.936514	,lng:	72.836002	}	,
+{lat:	18.9385813	,lng:	72.8285519	}	,
+{lat:	18.9490563	,lng:	72.8204107	}	,
+{lat:	18.9374102	,lng:	72.8275389	}	,
+{lat:	18.9442	,lng:	72.7935	}	,
+{lat:	18.9336401	,lng:	72.8275377	}	,
+{lat:	18.9349099	,lng:	72.8269647	}	,
+{lat:	18.9678423	,lng:	72.8194213	}	,
+{lat:	18.9718535	,lng:	72.8131046	}	,
+{lat:	18.9742512	,lng:	72.8061944	}	,
+{lat:	18.9696305	,lng:	72.8193674	}	,
+{lat:	18.9783279	,lng:	72.8129891	}	,
+{lat:	18.9693684	,lng:	72.8217266	}	,
+{lat:	18.9720971	,lng:	72.8374064	}	,
+{lat:	18.9773363	,lng:	72.8097865	}	,
+{lat:	18.9677747	,lng:	72.8290476	}	,
+{lat:	18.9682557	,lng:	72.8236431	}	,
+{lat:	18.9784641	,lng:	72.8136458	}	,
+{lat:	18.9716648	,lng:	72.81851	}	,
+{lat:	18.972717	,lng:	72.8221484	}	,
+{lat:	18.9748946	,lng:	72.8186693	}	,
+{lat:	18.9723776	,lng:	72.8095129	}	,
+{lat:	18.9703793	,lng:	72.8324313	}	,
+{lat:	18.9665794	,lng:	72.8133702	}	,
+{lat:	19.0336867	,lng:	72.8589596	}	,
+{lat:	18.9762282	,lng:	72.8333302	}	,
+{lat:	18.971002	,lng:	72.8394239	}	,
+{lat:	18.9767719	,lng:	72.8076036	}	,
+{lat:	18.9773363	,lng:	72.8097865	}	,
+{lat:	18.9768387	,lng:	72.8066271	}	,
+{lat:	18.9513544	,lng:	72.8414406	}	,
+{lat:	18.9754559	,lng:	72.8125066	}	,
+{lat:	18.9771978	,lng:	72.8067326	}	,
+{lat:	18.968964	,lng:	72.840231	}	,
+{lat:	18.9742512	,lng:	72.8061944	}	,
+{lat:	18.9723792	,lng:	72.8181177	}	,
+{lat:	18.9719743	,lng:	72.822313	}	,
+{lat:	18.9716648	,lng:	72.81851	}	,
+{lat:	18.9748946	,lng:	72.8186693	}	,
+{lat:	18.9723792	,lng:	72.8181177	}	,
+{lat:	18.972719	,lng:	72.8165189	}	,
+{lat:	48.0006677	,lng:	-113.9709615	}	,
+{lat:	18.9653453	,lng:	72.8417628	}	,
+{lat:	18.9674478	,lng:	72.8445615	}	,
+{lat:	18.9693684	,lng:	72.8217266	}	,
+{lat:	18.9677747	,lng:	72.8290476	}	,
+{lat:	18.9682557	,lng:	72.8236431	}	,
+{lat:	18.972717	,lng:	72.8221484	}	,
+{lat:	18.9696305	,lng:	72.8193674	}	,
+{lat:	18.9723776	,lng:	72.8095129	}	,
+{lat:	18.969539	,lng:	72.819329	}	,
+{lat:	18.96939	,lng:	72.8216489	}	,
+{lat:	18.9678423	,lng:	72.8194213	}	,
+{lat:	18.9665794	,lng:	72.8133702	}	,
+{lat:	18.9814135	,lng:	72.8360292	}	,
+{lat:	18.9750441	,lng:	72.8423166	}	,
+{lat:	18.9702123	,lng:	72.8214117	}	,
+{lat:	19.0598059	,lng:	72.896105	}	,
+{lat:	19.0702022	,lng:	72.8836703	}	,
+{lat:	19.0451694	,lng:	72.8934231	}	,
+{lat:	19.0560436	,lng:	72.8878667	}	,
+{lat:	19.052338	,lng:	72.9209839	}	,
+{lat:	19.068161	,lng:	72.899182	}	,
+{lat:	19.066815	,lng:	72.8777	}	,
+{lat:	19.0445546	,lng:	72.8670558	}	,
+{lat:	19.0642752	,lng:	72.8759619	}	,
+{lat:	19.0607105	,lng:	72.8844824	}	,
+{lat:	19.0438092	,lng:	72.8629943	}	,
+{lat:	19.0332044	,lng:	72.8716319	}	,
+{lat:	19.0552577	,lng:	72.8757324	}	,
+{lat:	19.0579621	,lng:	72.8863903	}	,
+{lat:	19.059906	,lng:	72.8773938	}	,
+{lat:	19.0723763	,lng:	72.8756894	}	,
+{lat:	19.0661304	,lng:	72.8787065	}	,
+{lat:	19.0702022	,lng:	72.8836703	}	,
+{lat:	19.0384827	,lng:	72.8685176	}	,
+{lat:	19.0637693	,lng:	72.8855028	}	,
+{lat:	19.066815	,lng:	72.8777	}	,
+{lat:	19.0661304	,lng:	72.8787065	}	,
+{lat:	19.0661304	,lng:	72.8787065	}	,
+{lat:	19.0656205	,lng:	72.8822396	}	,
+{lat:	19.0631395	,lng:	72.8893338	}	,
+{lat:	19.0523629	,lng:	72.9324648	}	,
+{lat:	19.0646346	,lng:	72.8825796	}	,
+{lat:	19.059906	,lng:	72.8773938	}	,
+{lat:	19.0626974	,lng:	72.8828184	}	,
+{lat:	19.0598059	,lng:	72.896105	}	,
+{lat:	19.0723763	,lng:	72.8756894	}	,
+{lat:	19.056396	,lng:	72.9067114	}	,
+{lat:	19.0653409	,lng:	72.8769119	}	,
+{lat:	19.0545638	,lng:	72.9149075	}	,
+{lat:	19.0642752	,lng:	72.8759619	}	,
+{lat:	19.0599547	,lng:	72.8914094	}	,
+{lat:	19.0572097	,lng:	72.8833975	}	,
+{lat:	19.0549341	,lng:	72.910785	}	,
+{lat:	19.05779	,lng:	72.8880348	}	,
+{lat:	19.0499149	,lng:	72.9323724	}	,
+{lat:	19.0570482	,lng:	72.8916194	}	,
+{lat:	19.0482409	,lng:	72.9323995	}	,
+{lat:	19.0599126	,lng:	72.8850745	}	,
+{lat:	19.0579621	,lng:	72.8863903	}	,
+{lat:	19.0560436	,lng:	72.8878667	}	,
+{lat:	19.0554497	,lng:	72.8954525	}	,
+{lat:	19.0574668	,lng:	72.8838549	}	,
+{lat:	19.0528921	,lng:	72.9011027	}	,
+{lat:	19.0517369	,lng:	72.8866485	}	,
+{lat:	19.0552577	,lng:	72.8757324	}	,
+{lat:	19.047257	,lng:	72.909794	}	,
+{lat:	19.0537936	,lng:	72.8871446	}	,
+{lat:	19.0557262	,lng:	72.8750124	}	,
+{lat:	19.0528594	,lng:	72.8711678	}	,
+{lat:	19.0458865	,lng:	72.896528	}	,
+{lat:	19.0451694	,lng:	72.8934231	}	,
+{lat:	19.045393	,lng:	72.8896053	}	,
+{lat:	19.0445546	,lng:	72.8670558	}	,
+{lat:	19.0445546	,lng:	72.8670558	}	,
+{lat:	19.0423665	,lng:	72.8759245	}	,
+{lat:	19.0438092	,lng:	72.8629943	}	,
+{lat:	19.0363648	,lng:	72.8947299	}	,
+{lat:	19.0330584	,lng:	72.8976546	}	,
+{lat:	19.0330562	,lng:	72.8975321	}	,
+{lat:	19.0384827	,lng:	72.8685176	}	,
+{lat:	19.0285922	,lng:	72.903237	}	,
+{lat:	19.0332044	,lng:	72.8716319	}	,
+{lat:	19.0227225	,lng:	72.9026712	}	,
+{lat:	19.022543	,lng:	72.870457	}	,
+{lat:	19.0598059	,lng:	72.896105	}	,
+{lat:	19.1007377	,lng:	72.8484952	}	,
+{lat:	19.1047418	,lng:	72.8947269	}	,
+{lat:	19.0770493	,lng:	72.8425412	}	,
+{lat:	19.0845361	,lng:	72.9076336	}	,
+{lat:	19.0756828	,lng:	72.8431857	}	,
+{lat:	19.101634	,lng:	72.887891	}	,
+{lat:	19.0822028	,lng:	72.867586	}	,
+{lat:	19.0793514	,lng:	72.9014661	}	,
+{lat:	19.0702022	,lng:	72.8836703	}	,
+{lat:	19.0625868	,lng:	72.8593813	}	,
+{lat:	19.0605737	,lng:	72.8504402	}	,
+{lat:	19.1001098	,lng:	72.844244	}	,
+{lat:	19.0785335	,lng:	72.8504402	}	,
+{lat:	19.1133601	,lng:	72.9293878	}	,
+{lat:	19.0784456	,lng:	72.8469271	}	,
+{lat:	19.0745721	,lng:	72.8658581	}	,
+{lat:	19.0777594	,lng:	72.8426732	}	,
+{lat:	19.068161	,lng:	72.899182	}	,
+{lat:	19.0917529	,lng:	72.8464505	}	,
+{lat:	19.0774455	,lng:	72.9039568	}	,
+{lat:	19.0718742	,lng:	72.9164811	}	,
+{lat:	19.0706894	,lng:	72.9045934	}	,
+{lat:	19.0822028	,lng:	72.867586	}	,
+{lat:	19.0829567	,lng:	72.8478554	}	,
+{lat:	19.083323	,lng:	72.8441629	}	,
+{lat:	19.0871685	,lng:	72.8430552	}	,
+{lat:	19.0798704	,lng:	72.8569844	}	
+    ];
+
+    $scope.initMap = function () {
+        $scope.map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 18, lng: 72 },
+            zoom: 3
+        });
+
+        //init marker cluster
+        var markers = [];
+        for (var i = 0; i < $scope.locations.length; i++) {
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng($scope.locations[i].lat, $scope.locations[i].lng),
+            });
+            markers.push(marker);
+           
+        }
+        var mcOptions = { imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m' };
+        markerCluster = new MarkerClusterer($scope.map, markers, mcOptions);
+
+        google.maps.event.addListener($scope.map, 'idle', function(){
+            $scope.$apply(function(){
+              $scope.numOfClusters = markerCluster.getTotalClusters();
+               $scope.numOfMarkers = markerCluster.getTotalMarkers();
+             $scope.numOfMarker=markerCluster.setCalculator(function(markers, numStyles){
+var index = 0,
+    count = markers.length,
+    total = count;
+
+
+while (total !== 0) {
+    total = parseInt(total / 5, 10);
+    index++;
+}
+
+
+index = Math.min(index, numStyles);
+
+return {
+    text: count + " ("+ index + ")",
+    index: index
+};
+});
+    
+var bounds = google.maps.LatLngBounds();
+for (var i = 0; i < locations.length; i++) {
+var beach = locations[i];
+var myLatLng = google.maps.LatLng(beach[1], beach[2]);
+var marker = google.maps.Marker({
+  position: myLatLng,
+  map: map,
+  shadow: shadow,
+  icon: image,
+  shape: shape,
+  title: beach[0],
+  zIndex: beach[3]
+});
+bounds.extend(myLatLng);
+}
+map.fitBounds(bounds);
+
+            //   var clusters = markerCluster.getClusters();
+            //   for( var i=0, l=clusters.length; i<l; i++ ){
+// for( var j=0, le=clusters[i].markers_.length; j<le; j++ ){
+ //   marker = clusters[i].markers_[j]; // <-- Here's your clustered marker
+//}
+//}
+              
+            });
+        });
+
+    };
+
+    $scope.initMap();
+});
+
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (p) {
+        var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+        var mapOptions = {
+            center: LatLng,
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+        var marker = new google.maps.Marker({
+            position: LatLng,
+            map: map,
+            title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
+        });
+        var lat=p.coords.latitude;
+        var long=p.coords.longitude;
+        alert(p.coords.latitude+","+p.coords.longitude)
+        var markers = [];
+        // for (var i = 0; i < $scope.locations.length; i++) {
+        //     var marker = new google.maps.Marker({
+                
+        //         position: new google.maps.LatLng($scope.locations[i].lat, $scope.locations[i].lng),
+                
+        //     });
+        
+        //     //markers.push(marker1);
+        // }
+        var marker1 =new google.maps.Marker({
+                position: new google.maps.LatLng(lat,long),
+            });
+            markers.push(marker1);
+        google.maps.event.addListener(marker, "click", function (e) {
+            var infoWindow = new google.maps.InfoWindow();
+            infoWindow.setContent(marker1.title);
+            infoWindow.open(map, marker1);
+        });
+    });
+} else {
+    alert('Geo Location feature is not supported in this browser.');
+}
+</script>
+
+<div id="dvMap">
+
+</div>

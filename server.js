@@ -1,181 +1,221 @@
-var express=require('express')
+var express = require('express')
 var io = require("socket.io")();
-var app=express();
+var assert = require('assert');
+var app = express();
 
-var bodyParser =require('body-parser');
-app.use(bodyParser.urlencoded({extended:false}));
-var cookieParser =require('cookie-parser');
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+var cookieParser = require('cookie-parser');
 app.use(cookieParser());
-var session =require('express-session');
+var session = require('express-session');
 app.use(session({
-    secret:"secret",
-    resave:true,
-    saveUninitialized:true
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true
 }));
-var mongo =require("mongodb").MongoClient;
-var url=process.env.MONGODB_URI ||"mongodb://localhost:27017";
+var mongo = require("mongodb").MongoClient;
+var url = process.env.MONGODB_URI || "mongodb://localhost:27017";
 
 
 function init() {
-    
+
     let conn;
     mongo.connect(url)
-            .then((client) => {
-              conn = client;
-              return client.db("heroku_qbrrdr1w");
-            })
-            .then((db) => db.createCollection("Login"))
-            .then((collection) => collection.insertMany([
-                    {username: "tom", password: "cat"},
-                    {username: "harry", password: "potter"},
-                    {username: "Swapnil", password: "swap123"},
-                    {username: "parth", password: "parth123"},
-                    {username: "niraj", password: "niraj123"}
-                           
-                ]))
-            .then(() => conn.close())
-            .then(() => test());
+        .then((client) => {
+            conn = client;
+            return client.db("heroku_qbrrdr1w");
+        })
+        .then((db) => db.createCollection("Login"))
+        .then((collection) => collection.insertMany([
+            { username: "tom", password: "cat" },
+            { username: "harry", password: "potter" },
+            { username: "Swapnil", password: "swap123" },
+            { username: "parth", password: "parth123" },
+            { username: "niraj", password: "niraj123" }
+
+        ]))
+        .then(() => conn.close())
+        .then(() => test());
+
+    mongo.connect(url)
+        .then((client) => {
+            conn = client;
+            return client.db("heroku_qbrrdr1w");
+        })
+        .then((db) => db.createCollection("Doctors"))
+        .then((collection) => collection.insertMany([
+            { docname: "Dr Vipul Trivedi", password: "abc123", speciality: "skincare", cost: "800" },
+            { docname: "Dr Rahul Rastogi", password: "xyz", speciality: "General", cost: "250" }
+        ]))
+        .then(() => conn.close())
+        .then(() => test1());
 }
-function test(){
+function test1() {
     let conn;
     mongo.connect(url)
-    .then((client)=>{
-        conn=client;
-        return client.db("heroku_qbrrdr1w");
-    })
-    .then((db)=>db.collection("Login"))
-    .then((collection) => collection.find())
-    .then(cursor => cursor.toArray())
-    .then(data => app.locals.users = data)
-    .then(()=>conn.close());
+        .then((client) => {
+            conn = client;
+            return client.db("heroku_qbrrdr1w");
+        })
+        .then((db) => db.collection("Doctors"))
+        .then((collection) => collection.find())
+        .then(cursor => cursor.toArray())
+        .then(data => app.locals.userdoc = data)
+        .then(() => conn.close());
+}
+function test() {
+    let conn;
+    mongo.connect(url)
+        .then((client) => {
+            conn = client;
+            return client.db("heroku_qbrrdr1w");
+        })
+        .then((db) => db.collection("Login"))
+        .then((collection) => collection.find())
+        .then(cursor => cursor.toArray())
+        .then(data => app.locals.users = data)
+        .then(() => conn.close());
 }
 
 init();
+app.post("/registeration", function (req, res) {
+    var item = {
+        username: req.body.name,
+        phone_number: req.body.phno,
+        Dob: req.body.dob,
+        password: req.body.pass
+    };
+    let conn;
+    mongo.connect(url)
+        .then((client) => {
+            conn = client;
+            return client.db("heroku_qbrrdr1w");
+        })
+        .then((db) => db.collection("Login"))
+        .then((collection) => { collection.insertOne(item) })
+        .then(() => conn.close())
+        .then(() => test());
 
-app.post("/registeration",function(req,res){
-(req)=>{var uname=req.body.name;
-var phno=req.body.phno;
-var DOB =req.body.dob;
-var password =req.body.pass;
-mongo.client(url)
-.then((client)=>{
-    conn=client;
-        return client.db("heroku_qbrrdr1w");
-
- })
- .then((db)=>db.collection("Login"))
- .then((collection)=>collection.insertMany([
-     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
-     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
-     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
-     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
-     {username:uname,phone_number:phno,Dateofbirth:DOB,password:password},
- ])).then((conn)=>conn.close())
-};
-res.send("/Login");
+    function test() {
+        let conn;
+        mongo.connect(url)
+            .then((client) => {
+                conn = client;
+                return client.db("heroku_qbrrdr1w");
+            })
+            .then((db) => db.collection("Login"))
+            .then((collection) => collection.find())
+            .then(cursor => cursor.toArray())
+            .then(data => app.locals.users = data)
+            .then(() => conn.close());
+    }
+    res.redirect("/Login");
+});
+app.get("/skincare", function (req, res) {
+    res.send("<h1>Reached here</h1>");
 });
 app.use(express.static('public'))
-app.get("/",function(req,res){
+app.get("/", function (req, res) {
     res.redirect("./index.html");
 })
-app.get("/Login",function(req,res){
-if(req.session.isAuthenticated){
-    res.redirect("/ind.html");
-}else{
-    if(req.session.try===undefined){
-        req.session.try=0;
+app.get("/Login", function (req, res) {
+    if (req.session.isAuthenticated) {
+        res.redirect("/ind.html");
+    } else {
+        if (req.session.try === undefined) {
+            req.session.try = 0;
+        }
+        if (req.session.try === 3) res.redirect("/Failure");
+        else res.redirect("/login.html");
     }
-    if(req.session.try===3) res.redirect("/Failure");
-    else res.redirect("/login.html");
-}
 });
 
 
-app.post("/authenticator",function(req,res){
-   
-    if(req.session.try === undefined){
+app.post("/authenticator", function (req, res) {
 
-    res.redirect("/login.html");
-}
-else if(req.session.try<3){
-    var Name=req.body.name;
-    var  Pass=req.body.pass;
-    console.log("Name is :"+Name);
-    console.log("Pass is :"+Pass);
+    if (req.session.try === undefined) {
 
-    var userRecord=app.locals.users.filter(doc => Name === doc.username);
-    if(userRecord[0]!==undefined){
-        if(Pass === userRecord[0].password){
-            req.session.isAuthenticated=true;
-           // req.session.uname=Name;
-            res.redirect("/ind.html");
-        }else{
+        res.redirect("/login.html");
+    }
+    else if (req.session.try < 3) {
+        var Name = req.body.name;
+        var Pass = req.body.pass;
+        console.log("Name is :" + Name);
+        console.log("Pass is :" + Pass);
+
+        var userRecord = app.locals.users.filter(doc => Name === doc.username);
+        if (userRecord[0] !== undefined) {
+            if (Pass === userRecord[0].password) {
+                req.session.isAuthenticated = true;
+                // req.session.uname=Name;
+                res.redirect("/ind.html");
+            } else {
+                req.session.try++;
+                res.redirect("/login.html");
+            }
+        } else {
             req.session.try++;
             res.redirect("/login.html");
         }
-    }else{
-        req.session.try++;
-        res.redirect("/login.html");
-    }
 
-}else{
-    res.redirect("/Failure");
-}
+    } else {
+        res.redirect("/Failure");
+    }
 });
-app.get("/Logout",function(req,res){
+app.get("/Logout", function (req, res) {
     req.session.destroy();
     res.redirect("/index.html")
 })
-app.get('/Failure',function(req,res){
-    setTimeout(()=>req.session.destroy(),3000);
+app.get('/Failure', function (req, res) {
+    setTimeout(() => req.session.destroy(), 3000);
     res.redirect("/Failure.html");
 });
 
-app.get("/jsonajax",function(req,res){
-    res.setHeader('Content-Header','application/json');
-    var diabetes ={
-        0:"thirst",
-        1:"Hunger",
-        2:"hunger",
-        3:"Thirst",
-        4:"weight",
-        5:"Weight",
-        6:"Irritable",
-        7:"Skin Infection",
-        8:"Infection",
-        9:"infection",
-        10:"Blurred Vision",
-        11:"blurred vision"
+app.get("/jsonajax", function (req, res) {
+    res.setHeader('Content-Header', 'application/json');
+    var diabetes = {
+        0: "thirst",
+        1: "Hunger",
+        2: "hunger",
+        3: "Thirst",
+        4: "weight",
+        5: "Weight",
+        6: "Irritable",
+        7: "Skin Infection",
+        8: "Infection",
+        9: "infection",
+        10: "Blurred Vision",
+        11: "blurred vision"
     }
-    var malaria={
-      0:"HeadAche",
-      1:"vomiting",
-      3:"Diarrhea",
-      4:"diarrhea",
-      5:"Vomiting",
-      6:"abdominal pain",
-      7:"Abdominal pain",
-      8:"anemia",
-      9:"muscle pain",
-      10:"fever"
+    var malaria = {
+        0: "HeadAche",
+        1: "vomiting",
+        3: "Diarrhea",
+        4: "diarrhea",
+        5: "Vomiting",
+        6: "abdominal pain",
+        7: "Abdominal pain",
+        8: "anemia",
+        9: "muscle pain",
+        10: "fever"
     };
-    var d3n={
-      0:"Increase in temperature",
-      1:"vomiting"
+    var d3n = {
+        0: "Increase in temperature",
+        1: "vomiting"
     };
-    res.send(JSON.stringify({a:diabetes,b:malaria,c:d3n}));
-  });
-  
-var hserver=app.listen(process.env.PORT || 8080,()=>{
+    res.send(JSON.stringify({ a: diabetes, b: malaria, c: d3n }));
+});
+
+var hserver = app.listen(process.env.PORT || 8080, () => {
     console.log("Server is ready");
 });
 
 
 io.listen(hserver);
 
-io.on('connection',(socket) => {
-console.log("User Connected");
-socket.join("chatroom");
-socket.on('sendMessage',(payload) => io.in("chatroom").emit('message',payload));
-socket.on('disconnect',() => console.log("User Disconnected"));
+io.on('connection', (socket) => {
+    console.log("User Connected");
+    socket.join("chatroom");
+    socket.on('sendMessage', (payload) => io.in("chatroom").emit('message', payload));
+    socket.on('disconnect', () => console.log("User Disconnected"));
 })
