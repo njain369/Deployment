@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Doctors Page</title>
+</head>
+<style>
+        #sideNavi {
+          position: fixed;
+          right: 50px;
+          top: 25%;
+        }
+    
+        .side-navi-item {
+          position: absolute;
+          display: inline-block;
+          width: 150px;
+          height: 50px;
+          transform: rotate(-90deg);
+          transform-origin: left top 0;
+          color: #fff;
+          background-color: #384047;
+          cursor: pointer;
+          border-radius: 5px 5px 0 0;
+        }
+    
+        .side-navi-item.item1 {
+          top: 180px;
+          left: 0;
+        }
+    
+        .side-navi-item.item2 {
+          top: 355px;
+          left: 0;
+        }
+    
+        .side-navi-item.active {
+          background-color: #e5e5e5;
+          color: #000;
+        }
+    
+        .side-navi-item>div {
+          padding-top: 15px;
+          text-align: center;
+        }
+    
+        .side-navi-data {
+          position: absolute;
+          top: 0;
+          left: 50px;
+          width: 650px;
+          height: 450px;
+          background-color: #e5e5e5;
+        }
+    
+        .side-navi-tab {
+          display: none;
+        }
+    
+        .side-navi-tab.active {
+          display: inline-block;
+          color: #000;
+        }
+    
+        .side-navi-tab>div {
+          padding: 30px;
+        }
+      </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet"
+    href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+    integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+    integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+    integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+
+
+
+<script>
+
+    function cool() {
+        alert("Hii my name is niraj");
+    }
+    var data = "";
+    function ajaxenabled() {
+        var i = 0;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = () => {
+            if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+
+                data = JSON.parse(xhttp.responseText);
+                while (data.m[i].place != undefined) {
+                    var tr = document.createElement("TR");
+                    tr.id = "tr" + i;
+                    document.getElementById("table1").appendChild(tr);
+                    var td = document.createElement("TD");
+                    document.getElementById("tr" + i).appendChild(td);
+                    td.innerHTML = data.m[i].docname;
+                    
+                    var td = document.createElement("TD");
+                    document.getElementById("tr" + i).appendChild(td);
+                    td.innerHTML = data.m[i].speciality;
+                    var td = document.createElement("TD");
+                    document.getElementById("tr" + i).appendChild(td);
+                    td.innerHTML = data.m[i].place;
+                    var input = document.createElement("input");
+                    input.type = "radio"
+                    document.getElementById("tr" + i).appendChild(input);
+                    input.name = "select";
+                    input.id = "c" + i;
+                    i++;
+
+                }
+            }
+
+        }
+        xhttp.open("GET", "/doctor", true);
+        xhttp.send();
+    }
+    ajaxenabled();
+
+
+
+</script>
+
+<body>
+
+        <!--Main Navigation-->
+        <header>
+        
+          <!--Navbar-->
+          <nav class="navbar nav<bar-expand-md navbar-dark bg-dark sticky-top">
+        
+            <!-- Additional container -->
+            <div class="container">
+        
+              <!-- Navbar brand -->
+              <a class="navbar-brand" href="ind.html"><i class="fa fa-user-md"
+                style="font-size:24px"></i>&nbsp;MEDIT!</a>
+        
+              <!-- Collapse button -->
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+        
+              <!-- Collapsible content -->
+              <div class="collapse navbar-collapse" id="basicExampleNav">
+        
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="ind.html">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+                  </li>
+               
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">E-Medicine</a>
+                  </li>
+        
+                  <!-- Dropdown -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">Features</a>
+                    <div class="dropdown-menu dropdown-primary bg-light " aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="dispred.html">Diagnose Your Self!</a>
+                      <a class="dropdown-item" href="chat.html">Book an Appointment!</a>
+                      <a class="dropdown-item" href="appointment1.html">Tips to be healthy!</a>
+                    </div>
+                  </li>
+                
+                </ul>
+                <!-- Links -->
+        
+                <form class="form-inline">
+                  <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                  </div>
+                </form>
+                <ul class="navbar-nav mr-right">
+              
+                <li class="nav-item">
+                  <a class="nav-link" href="/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Logout</a>
+                </li>
+              </ul>
+              </div>
+              <!-- Collapsible content -->
+        
+            </div>
+            <!-- Additional container -->
+        
+          </nav>
+          <!--/.Navbar-->
+        
+        </header>
+        <!--Main Navigation-->
+        <div>
+    <form action="/Schedule" style="color: #757575;" method="GET">
+        <div class="md-form mt-3">
+        <table id="table1" class="table table-striped table-dark w-auto">
+            <tr>
+                <th>Doctor's Name</th>
+                <th>Speciality</th>
+                <th>Location</th>
+                <th>Confirmed Booking</th>
+            </tr>
+
+        </table>
+        <input type="button" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" value="Submit"onclick="selected()"/>
+       </div>
+    </form>
+</body>
+<script>
+  
+    function selected() {
+        var i = 0;
+        var j=1;
+
+        while (data.m[i].place != undefined) {
+            var ch = document.getElementById("c" + i).checked;
+
+
+            if (ch) {
+                
+            window.location.replace("/Schedule?cid=c"+j);
+ 
+                j++;
+                i++;
+
+            } else {
+                i++;
+                j++;
+            }
+        }
+
+    }
+
+</script>
+
+</html>

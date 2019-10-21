@@ -9,6 +9,7 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "mongodb": "^3.3.2",
+    "nexmo": "^2.5.1",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {},

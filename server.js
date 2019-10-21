@@ -2,6 +2,7 @@ var express = require('express')
 var io = require("socket.io")();
 var assert = require('assert');
 var app = express();
+const Nexmo = require('nexmo');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,14 +27,6 @@ function init() {
             return client.db("heroku_qbrrdr1w");
         })
         .then((db) => db.createCollection("Login"))
-        .then((collection) => collection.insertMany([
-            { username: "tom", password: "cat" },
-            { username: "harry", password: "potter" },
-            { username: "Swapnil", password: "swap123" },
-            { username: "parth", password: "parth123" },
-            { username: "niraj", password: "niraj123" }
-
-        ]))
         .then(() => conn.close())
         .then(() => test());
 
@@ -43,25 +36,20 @@ function init() {
             return client.db("heroku_qbrrdr1w");
         })
         .then((db) => db.createCollection("Doctors"))
-        .then((collection) => collection.insertMany([
-            { docname: "Dr Vipul Trivedi", password: "abc123", speciality: "skincare", cost: "800" },
-            { docname: "Dr Rahul Rastogi", password: "xyz", speciality: "General", cost: "250" }
-        ]))
+         
         .then(() => conn.close())
         .then(() => test1());
-}
-function test1() {
-    let conn;
-    mongo.connect(url)
+
+        mongo.connect(url)
         .then((client) => {
             conn = client;
             return client.db("heroku_qbrrdr1w");
         })
-        .then((db) => db.collection("Doctors"))
-        .then((collection) => collection.find())
-        .then(cursor => cursor.toArray())
-        .then(data => app.locals.userdoc = data)
-        .then(() => conn.close());
+        .then((db) => db.createCollection("Schedule"))
+        .then(() => conn.close())
+        .then(() => test2());
+
+        
 }
 function test() {
     let conn;
@@ -76,6 +64,36 @@ function test() {
         .then(data => app.locals.users = data)
         .then(() => conn.close());
 }
+function test1() {
+    let conn;
+    mongo.connect(url)
+        .then((client) => {
+            conn = client;
+            return client.db("heroku_qbrrdr1w");
+        })
+        .then((db) => db.collection("Doctors"))
+        .then((collection) => collection.find())
+        .then(cursor => cursor.toArray())
+        .then(data => app.locals.userdoc = data)
+        .then(() => conn.close());
+}
+//db access for getting schedule of the doctor;
+
+function test2(){
+    let conn;
+    mongo.connect(url)
+    .then((client)=>{
+        conn=client;
+        return client.db("heroku_qbrrdr1w");
+    })
+    .then((db)=>db.collection("Schedule"))
+    .then((collection)=>collection.find())
+    .then(cursor => cursor.toArray())
+    .then(data => app.locals.docdata = data)
+    .then(()=>conn.close());
+    console.log("Done");
+} 
+
 
 init();
 app.post("/registeration", function (req, res) {
@@ -206,6 +224,79 @@ app.get("/jsonajax", function (req, res) {
     res.send(JSON.stringify({ a: diabetes, b: malaria, c: d3n }));
 });
 
+var see="";
+var no1="";
+app.post("/sendsms",function(req,res){
+    const nexmo = new Nexmo({
+      apiKey: 'e06ccb19',
+      apiSecret: 'i5BjToAg2JmrEXhW',
+    });
+     no1=req.body.phno;
+    nexmo.verify.request({
+        number: no1,
+        brand: 'MEDIT',
+        code_length:'4'
+        
+      }, (err, result) => {
+        console.log(err ? err : result)
+         see=result;
+    });
+      res.redirect("/appointment1.html");
+});
+var see2="";//for authhentication
+app.post("/verifysms",function(req,res){
+    var rid=see.request_id;
+    const nexmo = new Nexmo({
+        apiKey: 'e06ccb19',
+        apiSecret: 'i5BjToAg2JmrEXhW',
+      });
+    var cde =req.body.code;
+    nexmo.verify.check({
+        request_id: rid,
+        code: cde
+      }, (err, result) => {
+        console.log(err ? err : result)
+        see=err;
+        see2=result;  
+    });
+    if(see.status=='0' || see2.status=='0' ){
+res.redirect("/appointment2.html"+"?phno="+no1);
+    }else{
+res.redirect("/appointment1.html");
+    }
+});
+
+var Place="";
+app.post("/doctorslist",function(req,res){
+Place= req.body.place;
+
+   
+  res.redirect("/doctors.html");
+});
+app.get("/doctor",function(req,res){
+    console.log("Inside doctor")
+  var docname=app.locals.userdoc.filter(doc=> Place===doc.place);
+  console.log(docname["0"].place);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({m:docname}));
+});
+
+//Schedule Logic Over here
+var s="";
+app.get("/Schedule",function(req,res){
+ s=req.query.cid;
+console.log(s);
+res.redirect("/tabbleview.html");
+});
+
+app.get("/ViewingData",function(req,res){
+    var result=s.slice(1);
+    console.log(result)
+    var docrecords= app.locals.docdata.filter(doc => result===doc.docid);
+    console.log(docrecords[0].schedule.Monday.MorningFrom);
+    res.send(JSON.stringify({m:docrecords}));
+
+})
 var hserver = app.listen(process.env.PORT || 8080, () => {
     console.log("Server is ready");
 });

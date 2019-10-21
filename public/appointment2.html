@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Application form</title>
+    </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet"
+    href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+    integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+    integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+    integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+   <script>
+   function showlocation() {
+   // One-shot position request.
+   navigator.geolocation.getCurrentPosition(callback);
+}
+
+function callback(position) {
+    var lat=position.coords.latitude;
+    var long=position.coords.longitude;
+// alert(position.coords.latitude);
+// alert(position.coords.longitude);
+  if(19.15<=lat<=19.165 && 72.852<=long<=72.86){
+      document.getElementById("loc").value="Goregaon";
+  }else if(19.136<=lat<=19.149){
+     alert("Ram Mandir");
+  }else if(19.03<=lat<=19.049){
+      alert("Sion");
+  }
+
+}
+
+
+   
+              
+   </script>
+    <body>
+        
+<!--Main Navigation-->
+<header>
+
+  <!--Navbar-->
+  <nav class="navbar nav<bar-expand-md navbar-dark bg-dark sticky-top">
+
+    <!-- Additional container -->
+    <div class="container">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="ind.html"><i class="fa fa-user-md"
+        style="font-size:24px"></i>&nbsp;MEDIT!</a>
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="ind.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+       
+          <li class="nav-item">
+            <a class="nav-link" href="#">E-Medicine</a>
+          </li>
+
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Features</a>
+            <div class="dropdown-menu dropdown-primary bg-light " aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="dispred.html">Diagnose Your Self!</a>
+              <a class="dropdown-item" href="chat.html">Book an Appointment!</a>
+              <a class="dropdown-item" href="appointment1.html">Tips to be healthy!</a>
+            </div>
+          </li>
+        
+        </ul>
+        <!-- Links -->
+
+        <form class="form-inline">
+          <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          </div>
+        </form>
+        <ul class="navbar-nav mr-right">
+      
+        <li class="nav-item">
+          <a class="nav-link" href="/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Logout</a>
+        </li>
+      </ul>
+      </div>
+      <!-- Collapsible content -->
+
+    </div>
+    <!-- Additional container -->
+
+  </nav>
+  <!--/.Navbar-->
+
+</header>
+<!--Main Navigation-->
+<div class="card">
+        <h5 class="card-header info-color white-text text-center py-4">
+                <strong>Application</strong>
+            </h5>
+            <div class="card-body px-lg-5">
+     <form class="text-center"  style="color: #757575;" method="POST" action="doctorslist">   
+            <div class="md-form mt-3">
+        <label>Mobile Number</label>
+        <input type="number" id="text1" class="form-control"value=""/>
+        <br>
+        <label>Select Location</label>
+        <input type="text" id="loc" class="form-control"name="place"/>
+        <input type="button"class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" onclick="showlocation()" value="Get your current location"/>
+        <br>
+        <input type="submit" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" />
+            </div>
+    </form>
+    </div>
+    </body>
+    <script>
+            var paramteres= new URLSearchParams(window.location.search);
+              var val=paramteres.get('phno')
+              
+        document.getElementById("text1").value=val;
+        </script>
+</html>

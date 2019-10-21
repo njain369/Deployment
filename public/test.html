@@ -373,7 +373,7 @@ if (navigator.geolocation) {
                 position: new google.maps.LatLng(lat,long),
             });
             markers.push(marker1);
-        google.maps.event.addListener(marker, "click", function (e) {
+        google.maps.event.addListener(marker1, "click", function (e) {
             var infoWindow = new google.maps.InfoWindow();
             infoWindow.setContent(marker1.title);
             infoWindow.open(map, marker1);
