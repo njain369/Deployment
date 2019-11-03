@@ -148,7 +148,7 @@ app.get("/Login", function (req, res) {
     }
 });
 
-
+var uname="";
 app.post("/authenticator", function (req, res) {
 
     if (req.session.try === undefined) {
@@ -161,9 +161,10 @@ app.post("/authenticator", function (req, res) {
         console.log("Name is :" + Name);
         console.log("Pass is :" + Pass);
 
-        var userRecord = app.locals.users.filter(doc => Name === doc.username);
+       var userRecord = app.locals.users.filter(doc => Name === doc.username);
         if (userRecord[0] !== undefined) {
             if (Pass === userRecord[0].password) {
+                uname=userRecord[0].username;
                 req.session.isAuthenticated = true;
                 // req.session.uname=Name;
                 res.redirect("/ind.html");
@@ -286,20 +287,83 @@ var s="";
 app.get("/Schedule",function(req,res){
  s=req.query.cid;
 console.log(s);
-res.redirect("/tabbleview.html");
+res.redirect("/tableview2.html");
 });
-
+var docn="";
 app.get("/ViewingData",function(req,res){
     var result=s.slice(1);
     console.log(result)
     var docrecords= app.locals.docdata.filter(doc => result===doc.docid);
+  docn=docrecords[0].docname;
     console.log(docrecords[0].schedule.Monday.MorningFrom);
-    res.send(JSON.stringify({m:docrecords}));
+    var today = new Date();
+    if(today.getDay() == 0){
+        if(today.getHours()>=9 && today.getHours()<=13){
+             var tim= today.getHours();
+             docrecords[0].schedule.Thursday.MorningFrom=tim; 
+              
+            res.send(JSON.stringify({m:docrecords}));
+        }else if(today.getHours()>=14 && today.getHours()<=17){
+            var tim =today.getHours();
+            console.log(docrecords[0]);
+            docrecords[0].schedule.Thursday.AfternoonFrom=tim;
+            res.send(JSON.stringify({m:docrecords}));
+        }else{
+            var tim =today.getHours();
+            docrecords[0].schedule.Thursday.EveningFrom=tim;
+            res.send(JSON.stringify({m:docrecords}));
+        }
+    }
+    
 
+})
+var val="";
+var valu="";
+//Final Booking ofSlots
+app.get("/Confirm",function(req,res){
+     val=req.query.c;
+     valu=req.query.d;
+    console.log(val,valu);
+
+    res.redirect("/final.html");
+})
+
+app.get("/finaldata",function(req,res){
+    var today = new Date();
+    var now = today.getDate()+1;
+
+    res.send(JSON.stringify({x:now,y:val,z:valu}));
 })
 var hserver = app.listen(process.env.PORT || 8080, () => {
     console.log("Server is ready");
 });
+
+app.get("/BookedSlot",function(req,res){
+    console.log(uname);
+    console.log(docn);
+    var today=new Date();
+
+    var item={
+        Patientname:uname,
+        Doctorname:docn,
+        DoctorId:s.slice(1),
+        Date:today.getDate(),
+        Day:today.getDay()
+    }
+    let conn;
+    mongo.connect(url)
+        .then((client) => {
+            conn = client;
+            return client.db("heroku_qbrrdr1w");
+        })
+        .then((db) => db.collection("Appointment"))
+        .then((collection) => { collection.insertOne(item) })
+        .then(() => conn.close());
+        
+      
+    res.redirect("/final.html")
+  
+})
 
 
 io.listen(hserver);

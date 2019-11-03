@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Book your Slots!
+    </title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+<link rel="stylesheet"
+    href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+    integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+    integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+    integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script>
+    function f1() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = () => {
+            if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+
+                var schelist = JSON.parse(xhttp.responseText);
+                console.log(schelist);
+                var monm = 9//schelist.m[0].schedule.Monday.MorningFrom;
+                var mona = 2//schelist.m[0].schedule.Monday.AfternoonFrom;
+                var mone = 5//schelist.m[0].schedule.Monday.EveningFrom;
+                switch (monm) {
+
+                    case 9: document.getElementById("3").innerHTML = "<a href='/BookedSlot' class='btn btn-info' role='button' >" + 6 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 10: document.getElementById("3").innerHTML = "<a href='/Confirm?c='Monday'&d='MorningFrom'' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 11: document.getElementById("3").innerHTML = "<a href='/Confirm?c='Monday'&d='MorningFrom'' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 12: document.getElementById("3").innerHTML = "<a href='/Confirm?c='Monday'&d='MorningFrom'' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                    default: document.getElementById("3").innerHTML = "<a href='/Confirm?c='Monday'&d='MorningFrom'' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                }
+                switch (mona) {
+
+                    case 14: document.getElementById("4").innerHTML = "<a href='/Confirm?c='Monday'&d='AfternoonFrom'' class='btn btn-info' role='button' >" + 4 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 15: document.getElementById("4").innerHTML = "<a href='/Confirm?c='Monday'&d='AfternoonFrom'' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 16: document.getElementById('4').innerHTML = "<a href='/Confirm?c='Monday'&d='AfternoonFrom'' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("4").innerHTML = "<a href='/Confirm?c='Monday'&d='AfternoonFrom'' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (mone) {
+
+                    case 17: document.getElementById("5").innerHTML = "<a href='/Confirm?c='Monday'&d='EveningFrom'' class='btn btn-info' role='button' >" + 7 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 18: document.getElementById("5").innerHTML = "<a href='/Confirm?c='Monday'&d='EveningFrom'' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 19: document.getElementById("5").innerHTML = "<a href='/Confirm?c='Monday'&d='EveningFrom''class='btn btn-info' role='button' >" + 2 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                    case 20: document.getElementById("5").innerHTML = "<a href='/Confirm?c='Monday'&d='EveningFrom'' class='btn btn-info' role='button' >" + 0 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("5").innerHTML = "<a href='/Confirm?c='Monday'&d='EveningFrom'' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+
+
+                var tuem = schelist.m[0].schedule.Tuesday.MorningFrom;
+                var tuea = schelist.m[0].schedule.Tuesday.AfternoonFrom;
+                var tuee = schelist.m[0].schedule.Tuesday.EveningFrom;
+                switch (tuem) {
+
+                    case 9: document.getElementById("8").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 6 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 10: document.getElementById("8").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 11: document.getElementById("8").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 12: document.getElementById("8").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (tuea) {
+
+                    case 14: document.getElementById("9").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 4 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 15: document.getElementById("9").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 16: document.getElementById('9').innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("9").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (tuee) {
+
+                    case 17: document.getElementById("10").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 7 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 18: document.getElementById("10").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 19: document.getElementById("10").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 2 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                    case 20: document.getElementById("10").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 0 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("10").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+
+                var wedm = schelist.m[0].schedule.Wednesday.MorningFrom;
+                var weda = schelist.m[0].schedule.Wednesday.AfternoonFrom;
+                var wede = schelist.m[0].schedule.Wednesday.EveningFrom;
+                switch (wedm) {
+
+                    case 9: document.getElementById("13").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 6 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 10: document.getElementById("13").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 11: document.getElementById("13").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 12: document.getElementById("13").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                    default: document.getElementById("13").innerHTML = "<a href='/Confirm?c=Wednesday&&d=MorningFrom' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (weda) {
+
+                    case 14: document.getElementById("14").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 4 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 15: document.getElementById("14").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 16: document.getElementById("14").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("14").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (wede) {
+
+                    case 17: document.getElementById("15").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 7 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 18: document.getElementById("15").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 19: document.getElementById("15").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 2 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 20: document.getElementById("15").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 0 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("15").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+
+                }
+
+
+                var thrm = schelist.m[0].schedule.Thursday.MorningFrom;
+                var thra = schelist.m[0].schedule.Thursday.AfternoonFrom;
+                var thre = schelist.m[0].schedule.Thursday.EveningFrom;
+                switch (thrm) {
+
+                    case 9: document.getElementById("18").innerHTML = "<a href='/Confirm?c='Thursday'&d='MorningFrom'' class='btn btn-info' role='button' >" + 6 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 10: document.getElementById("18").innerHTML = "<a href='/Confirm?c='Thursday'&d='MorningFrom'' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 11: document.getElementById("18").innerHTML = "<a href='/Confirm?c='Thursday'&d='MorningFrom'' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 12: document.getElementById("18").innerHTML = "<a href='/Confirm?c='Thursday'&d='MorningFrom'' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                    default: document.getElementById("18").innerHTML = "<a href='/Confirm?c=Wednesday&&d=MorningFrom' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (thra) {
+
+                    case 14: document.getElementById("19").innerHTML = "<a href='/Confirm?c='Thursday'&d='AfternoonFrom'' class='btn btn-info' role='button' >" + 4 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 15: document.getElementById("19").innerHTML = "<a href='/Confirm?c='Thursday'&d='AfternoonFrom'' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 16: document.getElementById("19").innerHTML = "<a href='/Confirm?c='Thursday'&d='AfternoonFrom'' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("19").innerHTML = "<a href='/Confirm?c='Thursday'&d='AfternoonFrom'' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (thre) {
+
+                    case 17: document.getElementById("20").innerHTML = "<a href='/Confirm?c='Thursday'&d='EveningFrom'' class='btn btn-info' role='button' >" + 7 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 18: document.getElementById("20").innerHTML = "<a href='/Confirm?c='Thursday'&d='EveningFrom'' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 19: document.getElementById("20").innerHTML = "<a href='/Confirm?c='Thursday'&d='EveningFrom'' class='btn btn-info' role='button' >" + 2 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 20: document.getElementById("20").innerHTML = "<a href='/Confirm?c='Thursday'&d='EveningFrom'' class='btn btn-info' role='button' >" + 0 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("20").innerHTML = "<a href='/Confirm?c='Thursday'&d='EveningFrom'' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+
+                }
+                
+                var frim = schelist.m[0].schedule.Friday.MorningFrom;
+                var fria = schelist.m[0].schedule.Friday.AfternoonFrom;
+                var frie = schelist.m[0].schedule.Friday.EveningFrom;
+                switch (frim) {
+
+                    case 9: document.getElementById("23").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 6 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 10: document.getElementById("23").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 11: document.getElementById("23").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 12: document.getElementById("23").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                    default: document.getElementById("23").innerHTML = "<a href='/Confirm?c=Wednesday&&d=MorningFrom' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (fria) {
+
+                    case 14: document.getElementById("24").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 4 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 15: document.getElementById("24").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 16: document.getElementById("24").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("24").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (frie) {
+
+                    case 17: document.getElementById("25").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 7 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 18: document.getElementById("25").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 19: document.getElementById("25").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 2 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 20: document.getElementById("25").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 0 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("25").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+
+                }
+                
+                var satm = schelist.m[0].schedule.Saturday.MorningFrom;
+                var sata = schelist.m[0].schedule.Saturday.AfternoonFrom;
+                var sate = schelist.m[0].schedule.Saturday.EveningFrom;
+                switch (satm) {
+
+                    case 9: document.getElementById("28").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 6 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 10: document.getElementById("28").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 11: document.getElementById("28").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 12: document.getElementById("28").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                    default: document.getElementById("28").innerHTML = "<a href='/Confirm?c=Wednesday&&d=MorningFrom' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+                        break
+                }
+                switch (sata) {
+
+                    case 14: document.getElementById("29").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 4 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 15: document.getElementById("29").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 3 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 16: document.getElementById("29").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 1 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("29").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+                }
+                switch (sate) {
+
+                    case 17: document.getElementById("30").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 7 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 18: document.getElementById("30").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 5 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+
+                    case 19: document.getElementById("30").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 2 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    case 20: document.getElementById("30").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 0 + "&nbsp;&nbsp;Slots</a>";
+                        break;
+
+                    default: document.getElementById("30").innerHTML = "<a href='/Confirm' class='btn btn-info' role='button' >" + 8 + "&nbsp;&nbsp;Slots</a>";
+
+                }
+
+            }
+        }
+        xhttp.open("GET", "/ViewingData", true);
+        xhttp.send();
+    }
+    f1();
+</script>
+
+<body>
+    <!--Main Navigation-->
+<header>
+
+        <!--Navbar-->
+        <nav class="navbar nav<bar-expand-md navbar-dark bg-dark sticky-top">
+      
+          <!-- Additional container -->
+          <div class="container">
+      
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="ind.html"><i class="fa fa-user-md"
+              style="font-size:24px"></i>&nbsp;MEDIT!</a>
+      
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+              aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+      
+              <!-- Links -->
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="ind.html">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+             
+                <li class="nav-item">
+                  <a class="nav-link" href="#">E-Medicine</a>
+                </li>
+      
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Features</a>
+                  <div class="dropdown-menu dropdown-primary bg-light " aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="dispred.html">Diagnose Your Self!</a>
+                    <a class="dropdown-item" href="chat.html">Book an Appointment!</a>
+                    <a class="dropdown-item" href="appointment1.html">Tips to be healthy!</a>
+                  </div>
+                </li>
+              
+              </ul>
+              <!-- Links -->
+      
+              <form class="form-inline">
+                <div class="md-form my-0">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                </div>
+              </form>
+              <ul class="navbar-nav mr-right">
+            
+              <li class="nav-item">
+                <a class="nav-link" href="/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Logout</a>
+              </li>
+            </ul>
+            </div>
+            <!-- Collapsible content -->
+      
+          </div>
+          <!-- Additional container -->
+      
+        </nav>
+        <!--/.Navbar-->
+      
+      </header>
+      <!--Main Navigation-->
+    <table class="table table-striped table-dark w-auto">
+        <tr>
+            <th>Doctor's id</th>
+            <th>Day</th>
+            <th>Morning</th>
+            <th>Afternoon</th>
+            <th>Evening</th>
+        </tr>
+        <tr id='tr1'>
+            <td id='1'></td>
+            <td id='2'>Monday</td>
+            <td id='3'></td>
+            <td id='4'></td>
+            <td id='5'></td>
+        </tr>
+        <tr id='tr2'>
+            <td id='6'></td>
+            <td id='7'>Tuesday</td>
+            <td id='8'></td>
+            <td id='9'></td>
+            <td id='10'></td>
+        </tr>
+        <tr id="tr3">
+            <td id='11'></td>
+            <td id='12'>Wednesday</td>
+            <td id='13'></td>
+            <td id='14'></td>
+            <td id='15'></td>
+        </tr>
+
+        <tr id="tr4">
+            <td id='16'></td>
+            <td id='17'>Thursday</td>
+            <td id='18'> </td>
+            <td id='19'></td>
+            <td id='20'></td>
+        </tr>
+        <tr id="tr5">
+            <td id='21'></td>
+            <td id='22'>Friday</td>
+            <td id='23'></td>
+            <td id='24'></td>
+            <td id='25'></td>
+        </tr>
+        <tr id="tr6">
+            <td id='26'></td>
+            <td id='27'>Saturday</td>
+            <td id='28'></td>
+            <td id='29'></td>
+            <td id='30'></td>
+        </tr>
+    </table>
+ <!-- Footer -->
+ <footer class="page-footer pt-4 mt-4   text-center text-md-left mt-5 bg-dark">
+      
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">A ASS Product</h5>
+          <p>Trusted Patner in your way to achieve goals</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+         <!-- Links -->
+         <h5 class="text-uppercase">Our clients</h5>
+
+         <ul class="list-unstyled">
+           <li>
+             <a href="#!"><img rc="">TCS</a>
+           </li>
+           <li>
+             <a href="#!">NITI Aayog India</a>
+           </li>
+           <li>
+             <a href="#!">BSE Stock</a>
+           </li>
+           <li>
+             <a href="#!">Oberoi Group of Companies</a>
+           </li>
+         </ul>
+
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  <h5 class="text-uppercase" >About</h5> 
+ </button>
+ 
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLongTitle">Created By ASS with heart by</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+          <div>
+              <h1>Project Guide</h1>
+              <h2>Naseem Shah</h1>
+             <br>
+              <img src="./images/ip1.png">
+            </div>
+            <br>
+         <div>
+           <h1>Lead Full Stack Developer</h1>
+           <h2>Niraj S. Jain</h1>
+          <br>
+           <img src="./images/ip1.png">
+         </div>
+         <br>
+         <div>
+             <h1>UI/UX Developer</h1>
+             <h2>Swapnil Joshi</h1>
+            <br>
+             <img src="./images/ip1.png">
+           </div>   
+             <br>
+             <div>
+                 <h1>Developer</h1>
+                 <h2>Parth Kanani</h1>
+                <br>
+                 <img src="./images/ip1.png">
+               </div>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         </div>
+     </div>
+   </div>
+ </div>
+  
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Created by ASS limted.</a>
+            </li>
+           
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://mdbootstrap.com/bootstrap-tutorial/">ASS.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+<script>
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  ctx.font = "30px Arial";
+  ctx.strokeText("MEDIT", 10, 50);
+</script>
+
+</body>
+
+</html>
+</body>
+
+</html>

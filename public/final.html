@@ -1,0 +1,79 @@
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    
+<script type="text/javascript">
+    $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
+</script>
+<script>
+  function ajaxenabled() {
+          var i = 0;
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = () => {
+              if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+             
+            var h= JSON.parse(xhttp.responseText);
+            document.getElementById("h").innerHTML=h.x;
+            document.getElementById("p1").innerHTML=h.y;
+            document.getElementById("p2").innerHTML=h.z;   
+        }
+
+            }
+
+            xhttp.open("GET","/finaldata",true);
+            xhttp.send();
+        }
+        ajaxenabled();
+</script>
+ 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 
+ <div class="container">
+   <!-- Trigger the modal with a button -->
+   
+ 
+   <!-- Modal -->
+   <div class="modal show" id="myModal" role="dialog">
+     <div class="modal-dialog">
+     
+       <!-- Modal content-->
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Appointment Status</h4>
+         </div>
+         <div class="modal-body">
+           <h id="h1">Appointment is booked on </h>
+           <h1 id ="h"></h1>
+           <p id="p1"></p>
+           <p id="p2"></p>
+         </div>
+         <div class="modal-footer">
+           <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+           <a href="/ind.html" class="btn btn-info" role="button">CLOSE</a>
+         </div>
+       </div>
+       
+     </div>
+   </div>
+   
+ </div>
+    

@@ -1,0 +1,76 @@
+
+/*---------------------------*/
+/*		   general
+/*---------------------------*/
+
+body,
+.posts .title-meta .entry-meta { font-family: Verdana, "Verdana Ref", sans-serif; }
+
+body {
+	background: #DFD9C3 ; 
+}
+
+h1,h2,h3,h4,h5,h6,
+.entry-time,
+.header-main-menu .trigger,
+.header-search input,
+.entry-meta,
+blockquote,
+.the-author,
+.comment-meta,
+label { font-family: Verdana, "Verdana Ref", sans-serif; }
+
+.logo .logo-text,
+.footer-widgets,
+.page-numbers li span,
+.next-prev a:hover,
+.page-links .current,
+.content input[type="submit"]:hover,
+.slider .entry-header,
+.slider .entry-content,
+.flex-direction-nav .flex-prev,
+.flex-direction-nav .flex-next,
+.widget_tag_cloud a:hover { 
+	background-color: #FE003C;  
+}
+
+.top-bar-section ul li > a:hover,
+.top-bar-section ul li.active > a,
+.heading,
+a,
+a:hover,
+.page-title,
+.the-author a,
+.entry-content .widget-title,
+.featured-image:hover a:after { color: #FE003C; }
+
+@media (min-width: 768px) {
+	logo { width: 280px; }
+	.logo img,
+	.logo-text {
+		width: 280px;
+		height: 69px;
+	}
+	.header-main-row { padding-left: 230px; }
+	.header-main-menu .trigger { 
+		height: 69px; 
+		line-height: 69px; 
+	}
+	.header-search { height: 69px; }
+	.header-search form { 
+		69px; 
+		width: 100%;
+		display: table;
+		height: 100%;
+	}
+	.header-search form > .row {
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	}
+}
+
+/*---------------------------*/
+/*		  custom css
+/*---------------------------*/	
+ 
